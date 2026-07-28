@@ -210,11 +210,21 @@
   .news-tag{display:inline-block;background:var(--pink);color:#fff;border-radius:8px;padding:2px 8px;font-size:11px;font-weight:700;margin-right:6px;}
   .econ-tag{display:inline-block;background:var(--blue);color:#fff;border-radius:8px;padding:2px 8px;font-size:11px;font-weight:700;margin-right:6px;}
   @media(max-width:760px){
-    .sidebar{width:140px;}.nav-item{justify-content:flex-start;}
-    .brand .title{display:none;}.clock{font-size:22px;}
+    body{flex-direction:column;}
+    .sidebar{width:100%;flex-direction:row;align-items:center;padding:8px 6px;overflow-x:auto;overflow-y:hidden;}
+    .brand{display:none;}
+    .sidebar .foot{display:none;}
+    .nav{flex-direction:row;flex-wrap:nowrap;gap:4px;padding:0;overflow-x:auto;}
+    .nav-item{flex:0 0 auto;padding:8px 10px;font-size:12px;white-space:nowrap;}
+    .nav-item .ic{width:auto;font-size:16px;}
+    .nav-item span{display:inline;}
+    .clock{font-size:18px;}
+    .quote{display:none;}
+    .topbar{padding:10px 12px;gap:10px;}
+    .content{padding:16px 12px;}
   }
   @media(max-width:420px){
-    .sidebar{width:120px;}
+    .nav-item{font-size:11px;padding:7px 8px;}
   }
 </style>
 </head>
@@ -773,16 +783,17 @@ function panelFood(c){
   const d=todayStr();
   const data=load('food_today',{});
   const day=data[d]||{meals:{},total:0};
+  const photo=(day.photo||'');
   let html=`<div class="card">
     <h2>🍱 每日饮食</h2>
-    <div class="sub">拍下三餐，我帮你估算热量并给具体到菜名的建议。（离线版：上传照片做记录，下方选择/填写菜品自动累计热量）</div>
+    <div class="sub">拍下/上传三餐照片（自动保存到当天），再选常见食物或填菜名+热量，系统自动累计并给针对菜名的建议。<br/>💡 说明：本地网页无法自动识别照片里的菜，需你选/填菜名，我来算热量和给建议。</div>
     <div class="stat-grid">
       <div class="stat"><div class="num">${day.total}</div><div class="lab">今日总热量(大卡)</div></div>
       <div class="stat"><div class="num">${load('profile',{weight:59}).weight<=52?'👍':'⚠️'}</div><div class="lab">状态</div></div>
     </div>
-    <div class="upload-zone" id="upz">📷 点击上传今日餐食照片（仅本地保存，做饮食记录）</div>
-    <input type="file" id="fileIn" accept="image/*" style="display:none"/>
-    <div class="preview" id="prev"></div>
+    <div class="upload-zone" id="upz">📷 点击拍照 / 上传今日餐食照片</div>
+    <input type="file" id="fileIn" accept="image/*" capture="environment" style="display:none"/>
+    <div class="preview" id="prev">${photo?`<img src="${photo}"/>`:''}</div>
   </div>`;
   ['早餐','午餐','晚餐','加餐'].forEach(m=>{
     const meals=day.meals[m]||[];
@@ -796,11 +807,17 @@ function panelFood(c){
   });
   html+=`<div class="card"><h2>💡 饮食建议</h2><div id="foodAdv"></div></div>`;
   c.innerHTML=html;
-  // 上传
+  // 上传（真正保存照片到当天记录）
   $('#upz').onclick=()=>$('#fileIn').click();
   $('#fileIn').onchange=e=>{
     const f=e.target.files[0];if(!f)return;
-    const r=new FileReader();r.onload=ev=>{$('#prev').innerHTML=`<img src="${ev.target.result}"/>`;toast('照片已记录（本地）📷');};
+    const r=new FileReader();
+    r.onload=ev=>{
+      const b64=ev.target.result;
+      day.photo=b64;data[d]=day;save('food_today',data);
+      $('#prev').innerHTML=`<img src="${b64}"/>`;
+      toast('📷 照片已保存到今天记录');
+    };
     r.readAsDataURL(f);
   };
   // 添加菜品
