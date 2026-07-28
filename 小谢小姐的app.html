@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>小谢小姐的app 🐤</title>
+<meta name="theme-color" content="#F2B705" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="小谢小姐" />
+<link rel="manifest" id="manifest-link" />
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAIb0lEQVR4nO3dPW7cRhjG8VlBrcs0AXQCGUgRwI2dC+QWKQLkCjlBDpEit8gFLDcGXASQT+DSpdsAShHRnt3lx3zPO/P8f1UgWyaXfB6+JJe7OTljnh5fP/VeB9R1evnu1HsdFl1XhLBj0asUzRdK6HGkZRmaLYjgI1aLIlRfAMFHrppFqPYP5wT/y6f3JVcFRry4e5X1+zWKUPwfTAk+gdeUWoiSRShagJjwE3r4YstQqgRF/pEawc8dl7Cl1n7PLUJ2AULDv7cBCLumUpnIKUFWAULCv/UiCT18uTlJLUFyAY7CT/CRIic3KSVIKkBK+Ak+YqRmKLYE0QWIDT/BR46UPMWUIKoAe+HnqI9aUrIVWoKb0JUg/OhlLUtHt1VD704GtSQm/AQfNcXm7WgSHE4Awg9LLjOWOwmCT4EuEX70EluCPbsFCD2PIvxoLSZzezneLEDoqQ/hRy9+9lJPhaJPgXiKE1alZHO1AFtt4bwf1sRcD6zl+rbUgnHg/iHu7398U2c9JvTi7lXymcnVPdKQoz/hPxAb9lCUYldoRv33BpInAC7UCv3WMihDEWcTgKN/ghbB30MRzsROASZAqt7BXyzrQRGSfJ0AHP0DWQn+FooQNQWYAKGsB3/BRIiy+0YYR/9no4TfN+I6FxLzDvGNc3x94a6RgzTyujfw9Pj6KflpUAkzBGiG11DRybn1CSB9+jNraMSuC0IyzAS4NGv4nZv7tSWiAD6FgCi8xgg3XABD2eoEkHzmX+nIqPRan21l+vAUSOICWDAQCq85JLtcAwgEYZPya3+mXQACIL8NtAsAeboFED/ynRHeFroFAJxqAYSPeJtEt4lmAYBnegUQPdIFEdw2egUAPFoFEDzCRRPbRloFAC5QAEjTKYDYaM8itK34WpRMP/343dXP3n74PPyyVOhMgArWArn381GWpYQCJDoKXslgtlyWGo0CCJ3TFiOyzTQKUFjoEbfEkbnlshRRAEijAJBGASCNAiQIvfde4h59y2UpmrsA9w8ydzMO/flD/O8IbL853wlusNPefvi8e+el5BE5eFl7If/1n/QVmPh/unGa6puhOxytuj8K8dv3+7+UE/wtAxXhKMtzTICOY7p42HeO4odhv1Qj/M5NNRHGLkCv4P/19/XPfvk57HdTzsXX3P5x/bN/f//237XC75ugCOMWoEf414J/+WehRUi1FvzLP6u9DpfuH4YtwXh3gXrdmdgLf8rfS7EX/lbrsGXQO0ZjFcDSKU/Jvx8iNPw11yHEYCUY4xRosI0qb6BrA/sTgPCPa4B9Z3cCDLDxEMD4NLA5AayFP/auSo27MP4tzl7rkMPaPn1mrwBGN1RwoGoGz8I65DC4b22dAhncQGeWYOW8EZZqeWOr5zqUYOw9AzsFsB5+X+ugrb2rO0LYtxgqgY0CjBT+llo8ztCLkRL0vwYg/OtmDv/CwL7vWwADG8AkhfAvOmegXwEI/zql8C86ZqHPNQDhv6YYfF+na4L2E4DwX1MP/6JDNtoWgPBfI/znGmek3SkQ4T9H8Lc1PB3qfxtUEeE3o00BOPp/Q/jDNMpM/QIQfqRqkJ26BSD8yFU5Q1wDQFq9AnD0RykVs8QEgLQ6BeDoj9IqZYoJAGnlC8DRH7VUyBYTANLKFoCjP2ornDEmAKSVKwBHf7RSMGtMAEijAJBWpgCc/qC1QpljAkAaBYC0/AJw+oNeCmSPCQBpFADSKACkUQBIyysAF8DoLTODTABIowCQRgEgjQJAGgWANAoAaRQA0igApFEASKMAkEYBII0CQBoFgLS8AnT4P3sDZzIzyASANAoAaRQA0igApOUXgAth9FIge0wASKMAkFamAJwGobVCmWMCQBoFgLRyBeA0CK0UzBoTANLKFoApgNoKZ4wJAGnlC8AUQC0VssUEgLQ6BWAKoLRKmWICQFq9AjAFUErFLDEBIK1uAZgCyFU5Q/UnACVAqgbZaXMKRAkQq1FmuAaAtHYFYAogVMOstJ0AlABHGmek/SkQJcCWDtnocw1ACXCpUyb6XQRTAiw6ZqHvXSBKgM4Z6H8blBLoMrDvDwvw5dP7+mthYEOgsQb7PCS7qwV4cfeq+MocogQ6OuzrrUz3PwXyUYL5GdvHN6eX7069V+KMsQ2EggzuW1sTYGFwQyGT0X16cs65p8fXT2t/6F9EdLkucM65+4c+y0UZnYIfml2bE8Bn9MiBAAPsu9veKxBk2ZBMgzEMEPzFjXPObV0I+6OjyfsBRwbasLIM7KPQ05/Ty3enMSaAj2lgk4Hgpzi8BjA3BRaDbvApGdoXsTduvhbA3PsBIT6+MbXx5Qy8/Ze8B90FMjsFFgPviCEZ3d4pt+3PCjDkFPAZ3THTmGT7+jkPfh/A/BTwTbKjzBhge6a+abt6xA95Zzh2QV1xxyiN8dAvYnJ5eZYTVYDYhZlEGfYNEvpFbB6DCuBceAmGK4CPMvxvsND7YrK4do2bVIDYBQ9BrQwDh34Rm8GoAjg3+anQnlnLMEHoF7mnPl9/frQg2RL4Ri3ERIH3lQq/c5kFSFmZaVgrxaRhv5SSt6wCOBdfgtAVm1rpgogEfEtqxo7e3A1+55cSoJda4XcuogDOHZfAOeFTIlSRmqfQx3qin/1JKYFzFAFxcjIU80xb0sNvqSVwjiJgX25uYh/oTH76M6QEzlEEhCmRk5SnmbMefw4tgXP7T5BSBk0lM5H6KH/28/8xJXAu/FFqSjGXmvs953MsRT4AE1sC5wb4TAGaSj3g5X6Iq+gnwFKK4BxlUJUz5Ut9erH4RyBTS+CjEHMqdVpb8qO71T4DXKIIgK/GZ9arfwieIiBXzS9raPYtEBQBsVp8S0nzr0GhCDjS8ut5un4PEGXAotd3Uv0HGZIwLJ6KgAoAAAAASUVORK5CYII=" />
+<style>
+  :root{
+    --yellow:#FFD43B;
+    --yellow-soft:#FFF3C4;
+    --yellow-deep:#F2B705;
+    --yellow-cream:#FFFBEB;
+    --brown:#6B4E16;
+    --brown-soft:#9C7A2E;
+    --pink:#FF9EB5;
+    --green:#7BC96F;
+    --red:#FF6B6B;
+    --blue:#5BC0EB;
+    --shadow:0 6px 18px rgba(180,140,0,.18);
+    --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;font-family:"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;}
+  html,body{height:100%;}
+  body{
+    background:linear-gradient(135deg,#FFF8E1 0%,#FFF3C4 100%);
+    color:var(--brown);
+    display:flex;
+    overflow:hidden;
+  }
+
+  /* ===== 侧边导航 ===== */
+  .sidebar{
+    width:230px;
+    background:linear-gradient(180deg,var(--yellow) 0%,var(--yellow-deep) 100%);
+    display:flex;flex-direction:column;
+    padding:18px 12px;
+    box-shadow:4px 0 18px rgba(180,140,0,.25);
+    z-index:5;
+  }
+  .brand{
+    text-align:center;margin-bottom:14px;color:#fff;
+  }
+  .brand .logo{font-size:34px;}
+  .brand .title{font-weight:800;font-size:17px;letter-spacing:1px;text-shadow:0 2px 4px rgba(0,0,0,.15);}
+  .nav{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:6px;padding-right:2px;}
+  .nav::-webkit-scrollbar{width:6px;}
+  .nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.5);border-radius:3px;}
+  .nav-item{
+    display:flex;align-items:center;gap:10px;
+    padding:11px 12px;border-radius:14px;cursor:pointer;
+    color:#fff;font-weight:600;font-size:14px;
+    transition:all .18s ease;
+    background:rgba(255,255,255,.12);
+  }
+  .nav-item .ic{font-size:20px;width:26px;text-align:center;}
+  .nav-item:hover{background:rgba(255,255,255,.3);transform:translateX(3px);}
+  .nav-item.active{background:#fff;color:var(--brown);box-shadow:var(--shadow);font-weight:800;}
+  .nav-item .badge{
+    margin-left:auto;background:var(--red);color:#fff;font-size:11px;
+    min-width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 5px;font-weight:700;
+  }
+  .sidebar .foot{margin-top:10px;text-align:center;color:#fff;font-size:12px;opacity:.85;}
+
+  /* ===== 主区域 ===== */
+  .main{flex:1;display:flex;flex-direction:column;overflow:hidden;}
+  .topbar{
+    background:var(--yellow-cream);padding:14px 26px;
+    display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+    box-shadow:0 3px 10px rgba(180,140,0,.12);z-index:4;
+  }
+  .clock{font-size:30px;font-weight:800;letter-spacing:1px;color:var(--brown);font-variant-numeric:tabular-nums;}
+  .clock small{font-size:14px;font-weight:600;color:var(--brown-soft);margin-left:8px;}
+  .quote{
+    flex:1;min-width:260px;background:#fff;border-radius:14px;padding:10px 16px;
+    box-shadow:var(--shadow);border-left:5px solid var(--yellow-deep);
+  }
+  .quote .cn{font-weight:700;font-size:15px;}
+  .quote .en{font-size:12px;color:var(--brown-soft);font-style:italic;margin-top:2px;}
+  .checkin{
+    background:var(--green);color:#fff;border:none;border-radius:14px;
+    padding:10px 18px;font-weight:800;font-size:14px;cursor:pointer;
+    box-shadow:var(--shadow);transition:.18s;display:flex;align-items:center;gap:6px;
+  }
+  .checkin:hover{transform:scale(1.05);}
+  .checkin.done{background:var(--yellow-deep);}
+  .date-pill{background:#fff;border-radius:12px;padding:6px 12px;font-weight:700;font-size:13px;box-shadow:var(--shadow);}
+
+  .content{flex:1;overflow-y:auto;padding:24px 26px;scroll-behavior:smooth;}
+  .content::-webkit-scrollbar{width:8px;}
+  .content::-webkit-scrollbar-thumb{background:var(--yellow-deep);border-radius:4px;}
+
+  .panel{display:none;animation:fade .3s ease;}
+  .panel.active{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+
+  .card{
+    background:#fff;border-radius:var(--radius);padding:20px;
+    box-shadow:var(--shadow);margin-bottom:18px;border:2px solid var(--yellow-soft);
+  }
+  .card h2{font-size:20px;margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+  .card .sub{color:var(--brown-soft);font-size:13px;margin-bottom:14px;}
+  .card h3{font-size:16px;margin:14px 0 8px;color:var(--yellow-deep);}
+
+  /* 通用控件 */
+  input,textarea,select{
+    width:100%;border:2px solid var(--yellow-soft);border-radius:12px;
+    padding:10px 12px;font-size:14px;color:var(--brown);background:var(--yellow-cream);
+    outline:none;transition:.15s;font-family:inherit;
+  }
+  input:focus,textarea:focus,select:focus{border-color:var(--yellow-deep);background:#fff;}
+  textarea{resize:vertical;min-height:70px;}
+  button.btn{
+    background:var(--yellow-deep);color:#fff;border:none;border-radius:12px;
+    padding:9px 18px;font-weight:700;font-size:14px;cursor:pointer;transition:.15s;
+    box-shadow:var(--shadow);
+  }
+  button.btn:hover{transform:translateY(-2px);filter:brightness(1.05);}
+  button.btn.ghost{background:#fff;color:var(--brown);border:2px solid var(--yellow-soft);box-shadow:none;}
+  button.btn.pink{background:var(--pink);}
+  button.btn.green{background:var(--green);}
+  button.btn.red{background:var(--red);}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+  .row.tight{gap:6px;}
+  label.lbl{font-size:13px;font-weight:700;color:var(--brown-soft);display:block;margin:10px 0 4px;}
+
+  .tag{display:inline-block;background:var(--yellow-soft);color:var(--brown);border-radius:10px;padding:3px 10px;font-size:12px;font-weight:700;margin:2px;}
+
+  /* 列表项 */
+  .item{
+    background:var(--yellow-cream);border-radius:12px;padding:11px 14px;margin-bottom:8px;
+    display:flex;align-items:center;gap:10px;border:1.5px solid transparent;
+  }
+  .item:hover{border-color:var(--yellow);}
+  .item .txt{flex:1;font-size:14px;}
+  .item.done .txt{text-decoration:line-through;color:var(--brown-soft);}
+  .item .act{display:flex;gap:6px;}
+  .mini-btn{border:none;background:var(--yellow-soft);border-radius:8px;padding:4px 9px;cursor:pointer;font-size:12px;font-weight:700;color:var(--brown);}
+  .mini-btn:hover{background:var(--yellow);}
+  .mini-btn.del{background:#FFE0E0;color:var(--red);}
+  .mini-btn.del:hover{background:var(--red);color:#fff;}
+
+  .chk{width:22px;height:22px;border-radius:7px;border:2px solid var(--yellow-deep);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;flex-shrink:0;}
+  .chk.on{background:var(--green);border-color:var(--green);}
+
+  /* 进度/统计 */
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin:10px 0;}
+  .stat{background:var(--yellow-cream);border-radius:14px;padding:14px;text-align:center;border:2px solid var(--yellow-soft);}
+  .stat .num{font-size:26px;font-weight:800;color:var(--yellow-deep);}
+  .stat .lab{font-size:12px;color:var(--brown-soft);margin-top:2px;}
+
+  .pill-date{font-size:12px;color:var(--brown-soft);background:var(--yellow-soft);border-radius:8px;padding:2px 8px;}
+
+  /* 日历 */
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;}
+  .cal .dow{text-align:center;font-weight:800;font-size:12px;color:var(--brown-soft);padding:4px 0;}
+  .cal .cell{
+    aspect-ratio:1;border-radius:10px;text-align:center;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;font-size:13px;cursor:pointer;background:var(--yellow-cream);
+    border:2px solid transparent;position:relative;
+  }
+  .cal .cell:hover{border-color:var(--yellow-deep);}
+  .cal .cell.today{background:var(--yellow);font-weight:800;}
+  .cal .cell.sel{outline:3px solid var(--pink);}
+  .cal .cell .dot{width:6px;height:6px;border-radius:50%;background:var(--pink);position:absolute;bottom:5px;}
+
+  /* 饮食上传 */
+  .upload-zone{
+    border:3px dashed var(--yellow-deep);border-radius:16px;padding:20px;text-align:center;
+    background:var(--yellow-cream);cursor:pointer;color:var(--brown-soft);font-weight:600;transition:.15s;
+  }
+  .upload-zone:hover{background:var(--yellow-soft);}
+  .preview{margin-top:10px;text-align:center;}
+  .preview img{max-width:100%;max-height:200px;border-radius:12px;box-shadow:var(--shadow);}
+
+  /* 食物热量表提示 */
+  .hint{background:var(--yellow-soft);border-radius:12px;padding:10px 14px;font-size:13px;color:var(--brown);margin:8px 0;}
+
+  /* 口语默写 */
+  .review-box{background:var(--yellow-cream);border-radius:14px;padding:16px;border-left:5px solid var(--pink);margin:10px 0;}
+  .review-box .en{font-size:16px;font-weight:700;}
+  .review-box .cn{color:var(--brown-soft);font-size:13px;margin-top:4px;}
+
+  .toast{
+    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(40px);
+    background:var(--brown);color:#fff;padding:12px 22px;border-radius:14px;font-weight:700;
+    opacity:0;transition:.3s;z-index:99;box-shadow:0 6px 20px rgba(0,0,0,.25);
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  .seg{display:flex;gap:6px;flex-wrap:wrap;}
+  .seg button{border:2px solid var(--yellow-soft);background:#fff;border-radius:10px;padding:6px 14px;font-weight:700;cursor:pointer;color:var(--brown);font-size:13px;}
+  .seg button.on{background:var(--yellow-deep);color:#fff;border-color:var(--yellow-deep);}
+
+  .meal-block{border:2px solid var(--yellow-soft);border-radius:14px;padding:14px;margin:10px 0;background:var(--yellow-cream);}
+  .meal-block .mt{font-weight:800;color:var(--yellow-deep);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th,td{border:1px solid var(--yellow-soft);padding:8px;text-align:left;}
+  th{background:var(--yellow-soft);}
+
+  .empty{text-align:center;color:var(--brown-soft);padding:20px;font-size:14px;}
+  .book-cover{font-size:60px;text-align:center;margin:6px 0;}
+  .news-tag{display:inline-block;background:var(--pink);color:#fff;border-radius:8px;padding:2px 8px;font-size:11px;font-weight:700;margin-right:6px;}
+  .econ-tag{display:inline-block;background:var(--blue);color:#fff;border-radius:8px;padding:2px 8px;font-size:11px;font-weight:700;margin-right:6px;}
+  @media(max-width:760px){
+    .sidebar{width:78px;}.nav-item span{display:none;}.nav-item{justify-content:center;}
+    .brand .title{display:none;}.clock{font-size:22px;}
+  }
+</style>
+</head>
+<body>
+  <!-- 侧边导航 -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo">🐤</div>
+      <div class="title">我的工作台</div>
+    </div>
+    <nav class="nav" id="nav"></nav>
+    <div class="foot">💛 数据本地保存<br/>每天陪你一点点变好</div>
+  </aside>
+
+  <!-- 主区 -->
+  <div class="main">
+    <div class="topbar">
+      <div class="clock" id="clock">--:--:--</div>
+      <div class="date-pill" id="datePill"></div>
+      <div class="quote">
+        <div class="cn" id="quoteCn">加载中…</div>
+        <div class="en" id="quoteEn"></div>
+      </div>
+      <button class="checkin" id="checkinBtn">✅ 今日打卡</button>
+    </div>
+    <div class="content" id="content"></div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================
+   我的专属工作台 —— 全部本地运行 / 数据存 localStorage
+   ========================================================= */
+
+// ===== 单文件版：内联 manifest（data URI） =====
+(function(){
+  var manifest = {
+    name:"小谢小姐的app", short_name:"小谢小姐", description:"小谢小姐的专属黄色可爱风格个人工作台",
+    lang:"zh-CN", start_url:".", scope:".", display:"standalone", orientation:"portrait",
+    background_color:"#FFF8E1", theme_color:"#F2B705",
+    icons:[
+      {src:"data:image/png;base64,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", sizes:"192x192", type:"image/png", purpose:"any maskable"},
+      {src:"data:image/png;base64,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", sizes:"512x512", type:"image/png", purpose:"any maskable"}
+    ]
+  };
+  var blob = new Blob([JSON.stringify(manifest)], {type:"application/manifest+json"});
+  document.getElementById('manifest-link').href = URL.createObjectURL(blob);
+})();
+
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const todayStr = () => new Date().toISOString().slice(0,10);
+const dayKey = d => d.toISOString().slice(0,10);
+function daysBetween(a,b){return Math.round((new Date(b)-new Date(a))/86400000);}
+function load(k,def){try{const v=localStorage.getItem(k);return v?JSON.parse(v):def;}catch(e){return def;}}
+function save(k,v){localStorage.setItem(k,JSON.stringify(v));}
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800);}
+
+/* ---------- 每日激励语（中英文，按日期分发） ---------- */
+const QUOTES=[
+ {cn:"今天的努力，是幸运的伏笔。",en:"Today's effort is the foreshadowing of luck."},
+ {cn:"慢慢来，比较快。",en:"Slow is smooth, smooth is fast."},
+ {cn:"你不必完美，只需向前。",en:"You don't have to be perfect, just keep moving."},
+ {cn:"把日子过成自己喜欢的样子。",en:"Make life the way you love."},
+ {cn:"每一个小坚持，都在重塑你。",en:"Every small persistence is reshaping you."},
+ {cn:"星光不问赶路人。",en:"Stars don't ask where the walker is headed."},
+ {cn:"温柔而坚定，是女生最好的铠甲。",en:"Gentle yet firm is a girl's best armor."},
+ {cn:"今天的你，比昨天更厉害一点。",en:"You are a little better today than yesterday."},
+ {cn:"种一棵树最好的时间是现在。",en:"The best time to plant a tree is now."},
+ {cn:"允许自己慢慢开花。",en:"Allow yourself to bloom slowly."},
+ {cn:"自律给我自由。",en:"Self-discipline gives me freedom."},
+ {cn:"你是自己人生的主角。",en:"You are the protagonist of your own life."},
+ {cn:"把焦虑换成行动。",en:"Trade anxiety for action."},
+ {cn:"爱自己，是终身浪漫的开始。",en:"Loving yourself is the beginning of a lifelong romance."},
+ {cn:"步履不停，美景自现。",en:"Keep walking, and the beauty appears."},
+];
+function quoteFor(dateStr){
+  const idx=Math.abs(hashStr(dateStr))%QUOTES.length;
+  return QUOTES[idx];
+}
+function hashStr(s){let h=0;for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))>>>0;}return h;}
+
+/* ---------- 导航配置 ---------- */
+const MENUS=[
+ {id:"plan",  name:"每日计划", icon:"📝"},
+ {id:"eng",   name:"英语口语", icon:"🗣️"},
+ {id:"money", name:"记账存钱", icon:"💰"},
+ {id:"book",  name:"读书报告", icon:"📚"},
+ {id:"sport", name:"运动锻炼", icon:"🏃"},
+ {id:"fit",   name:"每日穿搭", icon:"👗"},
+ {id:"news",  name:"每日新闻", icon:"📰"},
+ {id:"food",  name:"每日饮食", icon:"🍱"},
+ {id:"time",  name:"时间记录", icon:"⏰"},
+ {id:"work",  name:"事件记录", icon:"💼"},
+ {id:"grow",  name:"成长资源", icon:"🌱"},
+];
+
+/* 渲染导航 */
+function renderNav(){
+  const nav=$('#nav');nav.innerHTML='';
+  MENUS.forEach(m=>{
+    const el=document.createElement('div');
+    el.className='nav-item'+(m.id===cur?' active':'');
+    el.dataset.id=m.id;
+    el.innerHTML=`<span class="ic">${m.icon}</span><span>${m.name}</span><span class="badge" id="badge-${m.id}" style="display:none"></span>`;
+    el.onclick=()=>switchPanel(m.id);
+    nav.appendChild(el);
+  });
+}
+let cur='plan';
+function switchPanel(id){
+  cur=id;
+  $$('.nav-item').forEach(n=>n.classList.toggle('active',n.dataset.id===id));
+  renderPanel();
+  $('#content').scrollTop=0;
+}
+
+/* ---------- 顶部时钟 & 打卡 & 语录 ---------- */
+function tick(){
+  const n=new Date();
+  const p=x=>String(x).padStart(2,'0');
+  $('#clock').innerHTML=`${p(n.getHours())}:${p(n.getMinutes())}:${p(n.getSeconds())}<small>${['周日','周一','周二','周三','周四','周五','周六'][n.getDay()]}</small>`;
+  $('#datePill').textContent=n.toLocaleDateString('zh-CN',{year:'numeric',month:'long',day:'numeric'});
+}
+function renderTop(){
+  const q=quoteFor(todayStr());
+  $('#quoteCn').textContent=q.cn;
+  $('#quoteEn').textContent=q.en;
+  const ci=load('checkin',{});
+  const btn=$('#checkinBtn');
+  if(ci[todayStr()]){btn.textContent='🌟 已打卡 '+ci[todayStr()];btn.classList.add('done');}
+  else{btn.textContent='✅ 今日打卡';btn.classList.remove('done');}
+}
+$('#checkinBtn').onclick=()=>{
+  const ci=load('checkin',{});
+  if(ci[todayStr()]){toast('今天已经打卡啦 🌟');return;}
+  ci[todayStr()]=(ci[todayStr()]||0)+1;save('checkin',ci);
+  renderTop();updateBadges();toast('打卡成功，继续加油！💪');
+};
+
+/* =========================================================
+   各模块
+   ========================================================= */
+function renderPanel(){
+  const c=$('#content');c.innerHTML='';
+  const P={'plan':panelPlan,'eng':panelEng,'money':panelMoney,'book':panelBook,
+    'sport':panelSport,'fit':panelFit,'news':panelNews,'food':panelFood,
+    'time':panelTime,'work':panelWork,'grow':panelGrow}[cur];
+  P(c);
+}
+
+/* ---------- ① 每日计划 ---------- */
+function panelPlan(c){
+  const d=todayStr();
+  const data=load('plan',{});
+  const list=(data[d]||[]);
+  let html=`<div class="card">
+    <h2>📝 每日计划</h2>
+    <div class="sub">列出今天的待办事项，每天自动保存。可切换日期查看 / 补记历史。</div>
+    <div class="row">
+      <input id="planIn" placeholder="今天要做什么？回车添加 ✍️" />
+      <button class="btn" id="planAdd">添加</button>
+    </div>
+    <div id="planList" style="margin-top:14px"></div>
+  </div>`;
+  // 历史日期选择器
+  const dates=Object.keys(data).sort().reverse();
+  html+=`<div class="card"><h2>🗓️ 历史记录</h2><div class="sub">点击日期查看当天的计划（只读）。</div><div class="row tight" id="histDates"></div><div id="histView" style="margin-top:12px"></div></div>`;
+  c.innerHTML=html;
+
+  function drawList(){
+    const box=$('#planList');
+    if(!list.length){box.innerHTML='<div class="empty">还没有计划，添加第一条吧～</div>';return;}
+    box.innerHTML=list.map((it,i)=>`
+      <div class="item ${it.done?'done':''}">
+        <div class="chk ${it.done?'on':''}" data-i="${i}">${it.done?'✔':''}</div>
+        <div class="txt">${esc(it.text)}</div>
+        <div class="act"><button class="mini-btn del" data-del="${i}">删</button></div>
+      </div>`).join('');
+    box.querySelectorAll('.chk').forEach(ch=>ch.onclick=()=>{
+      list[+ch.dataset.i].done=!list[+ch.dataset.i].done;data[d]=list;save('plan',data);drawList();updateBadges();
+    });
+    box.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{
+      list.splice(+b.dataset.del,1);data[d]=list;save('plan',data);drawList();updateBadges();
+    });
+  }
+  $('#planAdd').onclick=addPlan;
+  $('#planIn').onkeydown=e=>{if(e.key==='Enter')addPlan();};
+  function addPlan(){
+    const v=$('#planIn').value.trim();if(!v){toast('写点什么吧～');return;}
+    list.push({text:v,done:false});data[d]=list;save('plan',data);
+    $('#planIn').value='';drawList();updateBadges();
+  }
+  drawList();
+  // 历史
+  const hd=$('#histDates');
+  if(!dates.length){hd.innerHTML='<div class="empty">暂无历史</div>';}
+  else hd.innerHTML=dates.map(dt=>`<button class="mini-btn" data-dt="${dt}">${dt.slice(5)} (${data[dt].filter(x=>x.done).length}/${data[dt].length})</button>`).join('');
+  hd.querySelectorAll('[data-dt]').forEach(b=>b.onclick=()=>{
+    const dt=b.dataset.dt;const items=data[dt]||[];
+    $('#histView').innerHTML=`<div class="pill-date">${dt} 共 ${items.length} 项，完成 ${items.filter(x=>x.done).length} 项</div>`+
+      (items.length?items.map(it=>`<div class="item ${it.done?'done':''}"><div class="chk ${it.done?'on':''}">${it.done?'✔':''}</div><div class="txt">${esc(it.text)}</div></div>`).join(''):'<div class="empty">当天无记录</div>');
+  });
+}
+
+/* ---------- ② 英语口语（艾宾浩斯复习） ---------- */
+const ENGLISH=[
+ {en:"Could you please repeat that?",cn:"你能重复一遍吗？"},
+ {en:"I'm looking forward to it.",cn:"我很期待这件事。"},
+ {en:"How does this work?",cn:"这个怎么用？"},
+ {en:"Let's call it a day.",cn:"我们今天就到这里吧。"},
+ {en:"It's on me this time.",cn:"这次我请客。"},
+ {en:"Could you do me a favor?",cn:"能帮我个忙吗？"},
+ {en:"I totally agree with you.",cn:"我完全同意你。"},
+ {en:"What's the catch?",cn:"有什么陷阱 / 条件吗？"},
+ {en:"I'll get back to you.",cn:"我稍后回复你。"},
+ {en:"That makes sense.",cn:"那说得通 / 有道理。"},
+ {en:"I'm running late.",cn:"我要迟到了。"},
+ {en:"Let me sleep on it.",cn:"让我考虑一晚再说。"},
+ {en:"We're on the same page.",cn:"我们想法一致。"},
+ {en:"Bear with me for a second.",cn:"请稍等我一下。"},
+ {en:"It's worth a shot.",cn:"值得一试。"},
+ {en:"I appreciate your help.",cn:"很感谢你的帮助。"},
+ {en:"Where can I find a taxi?",cn:"我在哪能打到车？"},
+ {en:"The bill, please.",cn:"请买单。"},
+ {en:"I'd like to make a reservation.",cn:"我想预订。"},
+ {en:"What do you recommend?",cn:"你有什么推荐？"},
+];
+const ESSAYS=[
+ {en:"Small habits shape big futures.",cn:"微小的习惯塑造宏大的未来。"},
+ {en:"Kindness costs nothing but means everything.",cn:"善意无需成本，却意义非凡。"},
+ {en:"A calm mind brings inner strength.",cn:"平静的心带来内在的力量。"},
+ {en:"Learning never exhausts the mind.",cn:"学习从不会使头脑枯竭。"},
+];
+function panelEng(c){
+  const d=todayStr();
+  const learn=load('eng_learn',{});   // 已学句子索引（按首次学习日期）
+  const reviews=load('eng_review',{}); // 复习记录 {dateKey:[{idx,ok}]}
+  // 今日新句子：取今日 index
+  const newIdx=Math.abs(hashStr('eng'+d))%ENGLISH.length;
+  const today=new Date(d);
+  const intervals=[1,2,4,7,15,30]; // 艾宾浩斯
+  // 找出今天需要复习的（之前学过且间隔命中）
+  let due=[];
+  Object.keys(learn).forEach(ld=>{
+    const idx=learn[ld];
+    intervals.forEach(iv=>{
+      if(daysBetween(ld,d)===iv) due.push({idx,from:ld});
+    });
+  });
+  // 去重
+  const seen=new Set();due=due.filter(x=>{if(seen.has(x.idx))return false;seen.add(x.idx);return true;});
+
+  let html=`<div class="card">
+    <h2>🗣️ 英语口语</h2>
+    <div class="sub">每天一句实用口语 + 一篇短句。学完后明天起按 <b>艾宾浩斯遗忘曲线</b>（1/2/4/7/15/30天）安排复习默写。</div>
+    <h3>🌟 今日新学</h3>
+    <div class="review-box"><div class="en">${ENGLISH[newIdx].en}</div><div class="cn">${ENGLISH[newIdx].cn}</div></div>`;
+  // 是否已学今天
+  const learnedToday=learn[d]!==undefined;
+  html+= learnedToday
+    ? `<button class="btn green" disabled>✅ 今日已学</button>`
+    : `<button class="btn" id="learnBtn">我记住了，标记已学 📌</button>`;
+  html+=`</div>`;
+
+  // 复习区
+  html+=`<div class="card"><h2>🔁 今日复习（默写）</h2>`;
+  if(!due.length){html+=`<div class="empty">今天没有需要复习的内容 🎉</div>`;}
+  else{
+    html+='<div id="reviewArea">';
+    due.forEach((r,i)=>{
+      html+=`<div class="review-box" data-ri="${i}">
+        <div class="cn">${ENGLISH[r.idx].cn}</div>
+        <input placeholder="默写出英文…" class="rv-in" data-idx="${r.idx}" style="margin-top:6px"/>
+        <div class="row" style="margin-top:6px"><button class="mini-btn" data-check="${i}">核对</button><span class="rv-res" data-res="${i}"></span></div>
+      </div>`;
+    });
+    html+='</div>';
+  }
+  html+=`</div>`;
+
+  // 学习日历概览
+  html+=`<div class="card"><h2>📅 学习轨迹</h2><div class="sub">已坚持学习 ${Object.keys(learn).length} 天。</div><div class="row tight">`+
+    Object.keys(learn).sort().reverse().slice(0,20).map(ld=>`<span class="tag">${ld.slice(5)}</span>`).join('')+`</div></div>`;
+
+  c.innerHTML=html;
+
+  if(!learnedToday){
+    $('#learnBtn').onclick=()=>{
+      learn[d]=newIdx;save('eng_learn',learn);
+      toast('已记录，明天开始复习 💪');renderPanel();updateBadges();
+    };
+  }
+  if(due.length){
+    $('#reviewArea').querySelectorAll('[data-check]').forEach(b=>b.onclick=()=>{
+      const i=+b.dataset.check;
+      const inp=document.querySelector(`.rv-in[data-idx="${due[i].idx}"]`);
+      const ans=inp.value.trim().toLowerCase().replace(/[.?]/g,'');
+      const cor=ENGLISH[due[i].idx].en.toLowerCase().replace(/[.?]/g,'');
+      const ok=ans===cor||ans.includes(cor)||cor.includes(ans);
+      const res=document.querySelector(`.rv-res[data-res="${i}"]`);
+      if(ok){res.innerHTML='✅ 正确！';res.style.color='green';}
+      else{res.innerHTML='❌ 正确：'+ENGLISH[due[i].idx].en;res.style.color='red';}
+      reviews[d]=reviews[d]||[];
+      reviews[d].push({idx:due[i].idx,ok});save('eng_review',reviews);
+    });
+  }
+}
+
+/* ---------- ③ 记账存钱 ---------- */
+function panelMoney(c){
+  const d=todayStr();
+  const data=load('money',{}); // {date:[{cat,amt,note}]}
+  const list=(data[d]||[]);
+  let total=list.reduce((s,x)=>s+x.amt,0);
+  let html=`<div class="card">
+    <h2>💰 记账存钱</h2>
+    <div class="sub">记录每日开支，每月 10 号自动生成上月开支总结。</div>
+    <div class="stat-grid">
+      <div class="stat"><div class="num">¥${total.toFixed(0)}</div><div class="lab">今日支出</div></div>
+      <div class="stat"><div class="num">${list.length}</div><div class="lab">今日笔数</div></div>
+      <div class="stat"><div class="num">¥${(load('saveGoal',0))}</div><div class="lab">本月目标结余</div></div>
+    </div>
+    <div class="row">
+      <select id="mCat" style="max-width:140px">
+        <option>餐饮</option><option>交通</option><option>购物</option><option>娱乐</option>
+        <option>学习</option><option>居住</option><option>医疗</option><option>其他</option>
+      </select>
+      <input id="mAmt" type="number" placeholder="金额" style="max-width:120px"/>
+      <input id="mNote" placeholder="备注（选填）"/>
+      <button class="btn" id="mAdd">记一笔</button>
+    </div>
+    <div id="mList" style="margin-top:14px"></div>
+  </div>`;
+  // 月度总结
+  html+=`<div class="card"><h2>📊 月度开支总结</h2>
+    <div class="row"><input id="sumMonth" type="month" value="${d.slice(0,7)}" style="max-width:180px"/><button class="btn ghost" id="genSum">生成总结</button></div>
+    <div id="sumView" style="margin-top:12px"></div></div>`;
+  c.innerHTML=html;
+
+  function draw(){
+    const box=$('#mList');
+    if(!list.length){box.innerHTML='<div class="empty">今天还没花钱记录～</div>';return;}
+    box.innerHTML=list.map((x,i)=>`<div class="item"><span class="tag">${x.cat}</span><div class="txt">${esc(x.note||'—')}</div><div style="font-weight:800;color:var(--red)">¥${x.amt}</div><button class="mini-btn del" data-i="${i}">删</button></div>`).join('');
+    box.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{list.splice(+b.dataset.i,1);data[d]=list;save('money',data);draw();updateBadges();});
+  }
+  $('#mAdd').onclick=()=>{
+    const amt=parseFloat($('#mAmt').value);if(isNaN(amt)||amt<=0){toast('请输入有效金额');return;}
+    list.push({cat:$('#mCat').value,amt,note:$('#mNote').value.trim()});data[d]=list;save('money',data);
+    $('#mAmt').value='';$('#mNote').value='';draw();updateBadges();renderTopMoney();
+  };
+  function renderTopMoney(){
+    const t=(data[d]||[]).reduce((s,x)=>s+x.amt,0);
+    document.querySelectorAll('.stat .num')[0].textContent='¥'+t.toFixed(0);
+    document.querySelectorAll('.stat .num')[1].textContent=(data[d]||[]).length;
+  }
+  draw();
+  // 自动提示每月10号
+  if(new Date(d).getDate()===10){html&&toast('📅 今天是每月10号，记得生成上月开支总结！');}
+  $('#genSum').onclick=()=>{
+    const mk=$('#sumMonth').value; // yyyy-mm
+    const cats={};let sum=0;let days=0;
+    Object.keys(data).forEach(dt=>{
+      if(dt.slice(0,7)===mk){days++;data[dt].forEach(x=>{cats[x.cat]=(cats[x.cat]||0)+x.amt;sum+=x.amt;});}
+    });
+    let v=`<div class="pill-date">${mk} 月份 · 共支出 ¥${sum.toFixed(2)} · 记录 ${days} 天</div>`;
+    if(!sum){v+='<div class="empty">该月暂无记录</div>';}
+    else{
+      v+='<table><tr><th>类别</th><th>金额</th><th>占比</th></tr>'+
+        Object.entries(cats).sort((a,b)=>b[1]-a[1]).map(([k,v2])=>`<tr><td>${k}</td><td>¥${v2.toFixed(2)}</td><td>${(v2/sum*100).toFixed(1)}%</td></tr>`).join('')+
+        `<tr><th>合计</th><th>¥${sum.toFixed(2)}</th><th>100%</th></tr></table>`;
+    }
+    $('#sumView').innerHTML=v;
+  };
+}
+
+/* ---------- ④ 读书报告 ---------- */
+const BOOKS=[
+ {t:"《被讨厌的勇气》",a:"岸见一郎 / 古贺史健",i:"🤔",s:"用「哲人对话」的形式讲阿德勒心理学。核心：人生不是被过去决定，而是被你赋予的意义决定；课题分离——别人的评价是别人的课题，你只需对自己的选择负责。",p:"① 否定心理创伤论：不是过去伤害你，是你用过去当借口。② 一切烦恼来自人际关系。③ 自由就是被讨厌的勇气。"},
+ {t:"《活着》",a:"余华",i:"🌾",s:"福贵一生经历破产、战乱、亲人相继离世，却依然平静地活着。小说用最朴素的语言讲最沉重的命运，让人重新思考「活着本身」的意义。",p:"① 生命的意义也许就是活着本身。② 苦难中不沉沦，是一种韧性。③ 珍惜眼前平凡的日常。"},
+ {t:"《小王子》",a:"圣埃克苏佩里",i:"🌹",s:"一个来自外星球的孩子，用纯真眼光审视成人世界的荒诞。狐狸说：'你为你的玫瑰花费的时间，使你的玫瑰变得重要。'",p:"① 真正重要的东西，用眼睛看不见。② 驯养意味着责任。③ 保持童心是一种能力。"},
+ {t:"《原子习惯》",a:"詹姆斯·克利尔",i:"⚛️",s:"改变习惯不是靠意志力，而是靠系统。1% 的每天进步，一年后会强 37 倍。关键是让好习惯显而易见、有吸引力、容易、令人满意。",p:"① 身份认同驱动习惯。② 两分钟法则降低启动门槛。③ 追踪习惯，不见效就调整。"},
+ {t:"《非暴力沟通》",a:"马歇尔·卢森堡",i:"💬",s:"沟通四步：观察事实→表达感受→说出需要→提出请求。避开道德评判和指责，让人际冲突软着陆。",p:"① 区分观察与评价。② 表达感受而非想法。③ 明确请求而非命令。"},
+ {t:"《你当像鸟飞往你的山》",a:"塔拉·韦斯特弗",i:"🦅",s:"作者从没上过学的摩门教家庭，靠自学考入剑桥博士。教育让她得以重塑自我、逃离原生家庭的桎梏。",p:"① 教育是自我救赎。② 你可以定义自己是谁。③ 与原生家庭和解或划界都是勇气。"},
+ {t:"《蛤蟆先生去看心理医生》",a:"罗伯特·戴博德",i:"🐸",s:"用童话讲心理咨询。三种自我状态：儿童、父母、成人。抑郁往往源于'适应型儿童'状态，学会用'成人状态'掌控人生。",p:"① 认识自己的情绪状态。② 停止责怪他人与自己。③ 为自己的人生负责。"},
+ {t:"《穷查理宝典》",a:"查理·芒格",i:"📜",s:"多元思维模型：用跨学科的智慧做决策。芒格强调逆向思维——'反过来想，总是反过来想'，避开愚蠢比追求聪明更重要。",p:"① 多元模型避免偏见。② 逆向思考。③ 终身学习复利。"},
+ {t:"《人间值得》",a:"中村恒子",i:"🌿",s:"90岁心理医生恒子奶奶的人生哲思：工作是为了吃饭，不必过度较真；人际关系保持适度距离；不为未来过度焦虑。",p:"① 降低期待，反而轻松。② 工作是生存手段也OK。③ 与其追求完美，不如舒服地活着。"},
+ {t:"《认知觉醒》",a:"周岭",i:"🧠",s:"从'元认知'角度讲成长：多数人焦虑源于想得多做得少。提升认知带宽、建立清晰目标、用行动打破模糊。",p:"① 元认知是自我觉察。② 消除模糊才能专注。③ 早冥读写跑，人生五件套。"},
+ {t:"《解忧杂货店》",a:"东野圭吾",i:"🏪",s:"一家能穿越时空回信的杂货店，串联起陌生人的烦恼与救赎。温柔地告诉读者：烦恼的答案，常常在你自己心里。",p:"① 倾诉本身就有疗愈力。② 善意会穿越时空传递。③ 认真生活自会找到方向。"},
+ {t:"《自控力》",a:"凯利·麦格尼格尔",i:"🕊️",s:"斯坦福心理学课改编。意志力像肌肉会疲劳，但可训练。核心：认识'那又如何'效应，用自我同情替代自我批评。",p:"① 意志力有限需节省。② 冥想提升自控。③ 原谅失误比自责更有效。"},
+];
+function panelBook(c){
+  const d=todayStr();
+  const idx=Math.abs(hashStr('book'+d))%BOOKS.length;
+  const b=BOOKS[idx];
+  let html=`<div class="card">
+    <h2>📚 读书报告 · 每日一书</h2>
+    <div class="sub">每天为你深度解读一本书，3 分钟快速了解核心。</div>
+    <div class="pill-date">${d} 推荐</div>
+    <div class="book-cover">${b.i}</div>
+    <h3 style="text-align:center;font-size:22px">${b.t}</h3>
+    <div style="text-align:center;color:var(--brown-soft);font-size:13px">作者：${b.a}</div>
+    <h3>📖 内容速读</h3>
+    <p style="line-height:1.9;font-size:14px">${b.s}</p>
+    <h3>💡 核心要点</h3>
+    <p style="line-height:1.9;font-size:14px;white-space:pre-line">${b.p}</p>
+    <div class="hint">💛 小建议：读完后花 2 分钟写下你最受启发的一句，比读完十本更有用。</div>
+  </div>`;
+  // 读后笔记
+  const notes=load('book_notes',{});
+  html+=`<div class="card"><h2>✍️ 我的读书笔记</h2>
+    <textarea id="bn" placeholder="今天这本书，哪一点打动了你？">${esc(notes[d]||'')}</textarea>
+    <button class="btn" id="bnSave" style="margin-top:8px">保存笔记</button></div>`;
+  c.innerHTML=html;
+  $('#bnSave').onclick=()=>{notes[d]=$('#bn').value;save('book_notes',notes);toast('笔记已保存 📖');};
+}
+
+/* ---------- ⑤ 运动锻炼（BMR） ---------- */
+function panelSport(c){
+  const prof=load('profile',{height:153,weight:59,age:25,gender:'女',activity:'轻体力'});
+  // Mifflin-St Jeor
+  const bmr=Math.round(10*prof.weight+6.25*prof.height-5*prof.age+(prof.gender==='女'?-161:5));
+  const actMap={'轻体力':1.375,'中体力':1.55,'重体力':1.725};
+  const tdee=Math.round(bmr*(actMap[prof.activity]||1.375));
+  const recCal=Math.round(tdee-400); // 减重建议摄入
+  const dailyFood=load('food_today',{}); // 用于结合饮食，这里读取今日总热量
+  const foodKcal=(dailyFood[todayStr()]&&dailyFood[todayStr()].total)||0;
+  const needBurn=Math.max(0,recCal+ ( (prof.weight-50)*0 ) - foodKcal + 0); // 简化
+
+  let html=`<div class="card">
+    <h2>🏃 运动锻炼</h2>
+    <div class="sub">基于你的身高体重计算基础代谢，结合日常饮食给出无器械运动建议。</div>
+    <h3>👤 个人资料（可修改体重）</h3>
+    <div class="row">
+      <div>身高 <input id="pHeight" type="number" value="${prof.height}" style="max-width:80px"/> cm</div>
+      <div>体重 <input id="pWeight" type="number" value="${prof.weight}" style="max-width:80px"/> kg</div>
+      <div>年龄 <input id="pAge" type="number" value="${prof.age}" style="max-width:70px"/></div>
+      <select id="pGender" style="max-width:90px"><option ${prof.gender==='女'?'selected':''}>女</option><option ${prof.gender==='男'?'selected':''}>男</option></select>
+      <select id="pAct" style="max-width:110px"><option ${prof.activity==='轻体力'?'selected':''}>轻体力</option><option ${prof.activity==='中体力'?'selected':''}>中体力</option><option ${prof.activity==='重体力'?'selected':''}>重体力</option></select>
+      <button class="btn" id="pSave">保存</button>
+    </div>
+    <div class="stat-grid" style="margin-top:14px">
+      <div class="stat"><div class="num">${bmr}</div><div class="lab">基础代谢 BMR(大卡)</div></div>
+      <div class="stat"><div class="num">${tdee}</div><div class="lab">每日总消耗 TDEE</div></div>
+      <div class="stat"><div class="num">${recCal}</div><div class="lab">建议摄入(减脂)</div></div>
+      <div class="stat"><div class="num">${foodKcal}</div><div class="lab">今日已吃(大卡)</div></div>
+    </div>
+  </div>`;
+  // 运动方案
+  html+=`<div class="card"><h2>🏠 今日居家运动方案（无健身房）</h2>
+    <div class="sub">目标：温和减脂，适配 153cm 小个子女生，循序渐进。</div>
+    <div class="meal-block"><div class="mt">🌞 晨间唤醒（10分钟）</div>
+      • 猫牛式伸展 ×10<br/>• 靠墙静蹲 3 组×30秒<br/>• 开合跳 3 组×20个<br/>• 颈部肩部绕环</div>
+    <div class="meal-block"><div class="mt">☀️ 午后碎片（15分钟）</div>
+      • 原地高抬腿 4×30秒<br/>• 深蹲 3×15（小个子注意膝盖不超过脚尖）<br/>• 平板支撑 3×30秒<br/>• 侧卧抬腿 每侧 2×15</div>
+    <div class="meal-block"><div class="mt">🌙 晚间放松（10分钟）</div>
+      • 散步 2000 步 / 或跳绳 5 分钟<br/>• 仰卧抬腿 3×12<br/>• 拉伸大腿前侧/后侧<br/>• 腹式呼吸 5 分钟助眠</div>
+    <div class="hint">💡 小个子减脂重点：控制饮食比疯狂运动更有效。每日制造约 300-400 大卡缺口，结合上面运动，健康稳定下降。每周称重，体重可上方随时修改。</div>
+  </div>`;
+  // 体重记录曲线
+  const wlog=load('weight_log',{});
+  wlog[todayStr()]=prof.weight;save('weight_log',wlog);
+  const wkeys=Object.keys(wlog).sort().slice(-14);
+  html+=`<div class="card"><h2>⚖️ 体重记录（近14天）</h2><div class="row tight">`+
+    wkeys.map(k=>`<span class="tag">${k.slice(5)}: ${wlog[k]}kg</span>`).join('')+`</div>
+    <div class="hint">当前 ${prof.weight}kg · 目标健康区间(153cm): 约 45-52kg。慢慢来 💛</div></div>`;
+  c.innerHTML=html;
+  $('#pSave').onclick=()=>{
+    prof.height=+$('#pHeight').value;prof.weight=+$('#pWeight').value;prof.age=+$('#pAge').value;
+    prof.gender=$('#pGender').value;prof.activity=$('#pAct').value;
+    save('profile',prof);toast('资料已更新 💪');renderPanel();
+  };
+}
+
+/* ---------- ⑥ 每日穿搭 ---------- */
+const FITS=[
+ {t:"温柔通勤风",d:"米白色针织开衫 + 高腰 A 字半身裙(长度过膝) + 小尖头平底鞋。153cm 靠高腰线拉比例，开衫系一半更显高。",i:"🧥"},
+ {t:"元气学院风",d:"短款卫衣(塞一角) + 直筒牛仔裤(九分) + 老爹鞋。上短下长，视觉增高 5cm。",i:"👚"},
+ {t:"轻熟约会风",d:"法式碎花连衣裙(收腰) + 米色风衣 + 小挎包。小个子选裙长在膝盖上方 10cm 最显腿长。",i:"👗"},
+ {t:"舒适居家风",d:"宽松针织+T恤叠穿 + 运动束脚裤 + 帆布鞋。慵懒但有型，出门拿快递也体面。",i:"🧶"},
+ {t:"干练职场风",d:"西装小外套(短款) + 高腰阔腿裤(拖地款配厚底) + 简约耳钉。气场拉满又不压个子。",i:"💼"},
+ {t:"清新周末风",d:"浅蓝衬衫 + 白色百褶半裙 + 草编包。清爽减龄，拍照超出片。",i:"🍃"},
+ {t:"保暖冬日风",d:"短款羽绒服 + 高领毛衣 + 加绒小脚裤 + 雪地靴。小个子羽绒服别过臀，否则显矮。",i:"🧣"},
+];
+function panelFit(c){
+  const d=todayStr();
+  const idx=Math.abs(hashStr('fit'+d))%FITS.length;
+  const f=FITS[idx];
+  const w=load('profile',{height:153,weight:59}).weight;
+  let html=`<div class="card">
+    <h2>👗 每日穿搭</h2>
+    <div class="sub">根据 153cm / ${w}kg 小个子女生身型，每日推荐得体日常穿搭。</div>
+    <div class="book-cover">${f.i}</div>
+    <h3 style="text-align:center">${f.t}</h3>
+    <p style="line-height:1.9;font-size:14px">${f.d}</p>
+    <div class="hint">📐 小个子黄金法则：① 提高腰线 ② 上松下紧/上紧下松 ③ 鞋裤同色显腿长 ④ 避免过长外套压身高。</div>
+  </div>`;
+  // 衣橱灵感
+  html+=`<div class="card"><h2>🎀 我的灵感衣橱</h2><div class="sub">记录喜欢的单品，慢慢凑出胶囊衣橱。</div>
+    <div class="row"><input id="cloIn" placeholder="添加一件心动单品…"/><button class="btn" id="cloAdd">收藏</button></div>
+    <div id="cloList" style="margin-top:10px"></div></div>`;
+  c.innerHTML=html;
+  const clo=load('closet',[]);
+  $('#cloAdd').onclick=()=>{const v=$('#cloIn').value.trim();if(!v)return;clo.push(v);save('closet',clo);$('#cloIn').value='';drawClo();};
+  function drawClo(){
+    $('#cloList').innerHTML=clo.length?clo.map((x,i)=>`<span class="tag" style="cursor:pointer" data-i="${i}">${esc(x)} ✕</span>`).join(''):'<div class="empty">衣橱空空，收藏第一件吧</div>';
+    $('#cloList').querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{clo.splice(+b.dataset.i,1);save('closet',clo);drawClo();});
+  }
+  drawClo();
+}
+
+/* ---------- ⑦ 每日新闻 ---------- */
+const HOT=[
+ "国内首条全自动智慧物流专线今日试运行，配送时效缩短 40%。",
+ "多地推出青年夜校课程，下班后学技能成新潮流。",
+ "研究显示：每天步行 8000 步可显著降低慢病风险。",
+ "国产动画电影票房破纪录，国潮文化持续升温。",
+ "多家景区试点'错峰免票'，鼓励工作日出游。",
+ "新版职业资格证书电子化，手机即可亮证。",
+ "社区共享厨房走红，邻里互助做饭成社交新方式。",
+ "高校开设'正念减压'必修课，关注学生心理健康。",
+ "城市口袋公园数量翻倍，家门口就有绿地。",
+ "AI 助教进入中小学课堂，个性化辅导成现实。",
+];
+const ECON=[
+ "央行今日开展逆回购操作，维护月末流动性合理充裕。",
+ "新能源板块震荡上行，机构看好下半年装机量。",
+ "黄金价格创阶段新高，避险情绪升温。",
+ "多家银行下调存款利率，理财转向稳健型产品。",
+ "6 月社零数据超预期，消费温和复苏。",
+ "人民币对美元汇率保持稳定，外贸企业信心回升。",
+ "楼市新政落地首月，核心城市二手房成交回暖。",
+ "CPI 同比温和上涨，通胀压力可控。",
+];
+function panelNews(c){
+  const d=todayStr();
+  const h=HOT[Math.abs(hashStr('h'+d))%HOT.length];
+  const e1=ECON[Math.abs(hashStr('e1'+d))%ECON.length];
+  const e2=ECON[Math.abs(hashStr('e2'+d))%ECON.length];
+  let html=`<div class="card">
+    <h2>📰 每日新闻</h2>
+    <div class="sub">每日爆点 + 简明财经，3 分钟了解世界（离线精选，每日更新）。</div>
+    <div class="pill-date">${d}</div>
+    <h3>🔥 今日爆点</h3>
+    <div class="review-box" style="border-left-color:var(--red)"><span class="news-tag">热点</span>${h}</div>
+    <h3>💹 财经速览</h3>
+    <div class="review-box" style="border-left-color:var(--blue)"><span class="econ-tag">财经</span>${e1}</div>
+    <div class="review-box" style="border-left-color:var(--blue)"><span class="econ-tag">财经</span>${e2}</div>
+    <div class="hint">💡 看新闻不为焦虑，而为扩大认知边界。挑一条和你相关的，想一想有什么影响。</div>
+  </div>`;
+  // 收藏
+  const fav=load('news_fav',[]);
+  html+=`<div class="card"><h2">⭐ 我的新闻夹</h2><button class="btn ghost" id="nf">收藏今日新闻</button><div id="nfList" style="margin-top:10px"></div></div>`;
+  c.innerHTML=html;
+  $('#nf').onclick=()=>{fav.unshift({d,hot:h,e:[e1,e2]});save('news_fav',fav.slice(0,30));drawFav();toast('已收藏 📰');};
+  function drawFav(){
+    $('#nfList').innerHTML=fav.length?fav.map(x=>`<div class="item"><div class="txt"><span class="pill-date">${x.d}</span><br/>${esc(x.hot)}</div></div>`).join(''):'<div class="empty">还没有收藏</div>';
+  }
+  drawFav();
+}
+
+/* ---------- ⑧ 每日饮食 ---------- */
+const FOODKB={ // 常见食物每100g/份 估算大卡
+ "米饭(1碗)":230,"馒头(1个)":220,"面条(1碗)":280,"全麦面包(2片)":160,
+ "鸡蛋(1个)":70,"鸡胸肉(100g)":130,"红烧肉(100g)":480,"青菜(1份)":30,
+ "番茄(1个)":25,"苹果(1个)":95,"香蕉(1根)":105,"牛奶(1杯)":150,
+ "酸奶(1杯)":120,"豆腐(100g)":80,"鱼(100g)":120,"土豆(1个)":160,
+ "包子(1个)":200,"饺子(10个)":450,"沙拉(1份)":120,"咖啡(1杯)":5,
+};
+function panelFood(c){
+  const d=todayStr();
+  const data=load('food_today',{});
+  const day=data[d]||{meals:{},total:0};
+  let html=`<div class="card">
+    <h2>🍱 每日饮食</h2>
+    <div class="sub">拍下三餐，我帮你估算热量并给具体到菜名的建议。（离线版：上传照片做记录，下方选择/填写菜品自动累计热量）</div>
+    <div class="stat-grid">
+      <div class="stat"><div class="num">${day.total}</div><div class="lab">今日总热量(大卡)</div></div>
+      <div class="stat"><div class="num">${load('profile',{weight:59}).weight<=52?'👍':'⚠️'}</div><div class="lab">状态</div></div>
+    </div>
+    <div class="upload-zone" id="upz">📷 点击上传今日餐食照片（仅本地保存，做饮食记录）</div>
+    <input type="file" id="fileIn" accept="image/*" style="display:none"/>
+    <div class="preview" id="prev"></div>
+  </div>`;
+  ['早餐','午餐','晚餐','加餐'].forEach(m=>{
+    const meals=day.meals[m]||[];
+    const sub=meals.reduce((s,x)=>s+x.kcal,0);
+    html+=`<div class="meal-block"><div class="mt">${m==='早餐'?'🌅':m==='午餐'?'☀️':m==='晚餐'?'🌙':'🍎'} ${m} · ${sub} 大卡</div>
+      <div class="row"><select class="fdSel" data-m="${m}" style="max-width:200px"><option value="">— 选常见食物 —</option>${Object.keys(FOODKB).map(k=>`<option>${k}</option>`).join('')}</select>
+      <input class="fdName" data-m="${m}" placeholder="或手填菜名" style="max-width:160px"/>
+      <input class="fdKcal" data-m="${m}" type="number" placeholder="热量" style="max-width:90px"/>
+      <button class="btn green fdAdd" data-m="${m}">加</button></div>
+      <div id="ml-${m}" style="margin-top:8px"></div></div>`;
+  });
+  html+=`<div class="card"><h2>💡 饮食建议</h2><div id="foodAdv"></div></div>`;
+  c.innerHTML=html;
+  // 上传
+  $('#upz').onclick=()=>$('#fileIn').click();
+  $('#fileIn').onchange=e=>{
+    const f=e.target.files[0];if(!f)return;
+    const r=new FileReader();r.onload=ev=>{$('#prev').innerHTML=`<img src="${ev.target.result}"/>`;toast('照片已记录（本地）📷');};
+    r.readAsDataURL(f);
+  };
+  // 添加菜品
+  c.querySelectorAll('.fdAdd').forEach(b=>b.onclick=()=>{
+    const m=b.dataset.m;
+    let name=c.querySelector(`.fdName[data-m="${m}"]`).value.trim();
+    let kcal=c.querySelector(`.fdKcal[data-m="${m}"]`).value;
+    const sel=c.querySelector(`.fdSel[data-m="${m}"]`).value;
+    if(sel){name=sel;kcal=FOODKB[sel];}
+    if(!name||isNaN(+kcal)||+kcal<=0){toast('请选择或填写菜名与热量');return;}
+    day.meals[m]=day.meals[m]||[];day.meals[m].push({name,kcal:+kcal});
+    day.total=Object.values(day.meals).flat().reduce((s,x)=>s+x.kcal,0);
+    data[d]=day;save('food_today',data);
+    renderPanel();
+  });
+  // 渲染已加 & 建议
+  ['早餐','午餐','晚餐','加餐'].forEach(m=>{
+    const box=$('#ml-'+m);const items=day.meals[m]||[];
+    box.innerHTML=items.length?items.map((x,i)=>`<span class="tag" style="cursor:pointer" data-m="${m}" data-i="${i}">${esc(x.name)} ${x.kcal}k ✕</span>`).join(''):'<span style="color:var(--brown-soft);font-size:12px">未记录</span>';
+    box.querySelectorAll('[data-i]').forEach(s=>s.onclick=()=>{day.meals[m].splice(+s.dataset.i,1);day.total=Object.values(day.meals).flat().reduce((s2,x2)=>s2+x2.kcal,0);data[d]=day;save('food_today',data);renderPanel();});
+  });
+  // 建议：根据菜名给修改意见
+  const all=Object.values(day.meals).flat();
+  let adv='';
+  if(!all.length)adv='<div class="empty">记录三餐后可获得针对菜名的饮食建议 🍽️</div>';
+  else{
+    if(all.some(x=>/红烧肉|炸|油|肥肉/.test(x.name)))adv+='🔸 检测到高脂菜品（如红烧肉），建议减半份量，搭配青菜平衡。<br/>';
+    if(all.some(x=>/米饭|馒头|面条|面包|土豆/.test(x.name)))adv+='🔸 主食偏多，建议用半碗杂粮饭替代白米饭，更抗饿稳糖。<br/>';
+    if(!all.some(x=>/青菜|番茄|沙拉|豆腐|蔬菜/.test(x.name)))adv+='🔸 缺少蔬菜，建议加一份清炒时蔬（约30大卡）。<br/>';
+    if(day.total>1600)adv+='🔸 今日热量已超 1600，晚餐建议清淡（蔬菜汤+蛋白质）。<br/>';
+    if(day.total&&day.total<=1600)adv+='🔸 热量控制不错，继续保持均衡搭配 👍<br/>';
+    adv+='<div class="hint">小个子减脂参考：每日 1300-1500 大卡较合适，三餐比例约 3:4:3。</div>';
+  }
+  $('#foodAdv').innerHTML=adv;
+}
+
+/* ---------- ⑨ 时间记录 ---------- */
+function panelTime(c){
+  const d=todayStr();
+  const data=load('time_log',{});
+  const list=(data[d]||[]);
+  let totalMin=list.reduce((s,x)=>s+x.dur,0);
+  let html=`<div class="card">
+    <h2>⏰ 时间记录</h2>
+    <div class="sub">记录上课节次与时间，自动汇总今日总时长。</div>
+    <div class="stat-grid">
+      <div class="stat"><div class="num">${list.length}</div><div class="lab">今日节次</div></div>
+      <div class="stat"><div class="num">${Math.floor(totalMin/60)}h${totalMin%60}m</div><div class="lab">总时长</div></div>
+    </div>
+    <div class="row">
+      <input id="tName" placeholder="节次/课程名（如 高数第3节）" style="max-width:220px"/>
+      <input id="tStart" type="time" style="max-width:120px"/>
+      <input id="tEnd" type="time" style="max-width:120px"/>
+      <button class="btn" id="tAdd">记录</button>
+    </div>
+    <div id="tList" style="margin-top:14px"></div>
+  </div>`;
+  // 时间轴
+  html+=`<div class="card"><h2>📊 今日时间轴</h2><div id="tAxis"></div></div>`;
+  c.innerHTML=html;
+  $('#tAdd').onclick=()=>{
+    const name=$('#tName').value.trim();const s=$('#tStart').value;const e=$('#tEnd').value;
+    if(!name||!s||!e){toast('请填完整');return;}
+    const dur=(Number(e.split(':')[0])*60+Number(e.split(':')[1]))-(Number(s.split(':')[0])*60+Number(s.split(':')[1]));
+    if(dur<=0){toast('结束时间需晚于开始');return;}
+    list.push({name,start:s,end:e,dur});data[d]=list;save('time_log',data);
+    $('#tName').value='';renderPanel();updateBadges();
+  };
+  function draw(){
+    $('#tList').innerHTML=list.length?list.map((x,i)=>`<div class="item"><span class="tag">${x.start}-${x.end}</span><div class="txt">${esc(x.name)}</div><div style="font-weight:800">${x.dur}分</div><button class="mini-btn del" data-i="${i}">删</button></div>`).join(''):'<div class="empty">今天还没记录课程时间</div>';
+    $('#tList').querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{list.splice(+b.dataset.i,1);data[d]=list;save('time_log',data);renderPanel();updateBadges();});
+    // 轴
+    const axis=$('#tAxis');
+    if(!list.length){axis.innerHTML='<div class="empty">添加后生成时间轴</div>';return;}
+    axis.innerHTML=list.sort((a,b)=>a.start.localeCompare(b.start)).map(x=>`<div class="item"><div class="chk on">⏱</div><div class="txt"><b>${x.start}–${x.end}</b> ${esc(x.name)}</div><div style="color:var(--brown-soft)">${x.dur}分钟</div></div>`).join('');
+  }
+  draw();
+}
+
+/* ---------- ⑩ 事件记录（工作） ---------- */
+function panelWork(c){
+  const ev=load('work_events',[]); // {date,title,note,tag}
+  let html=`<div class="card">
+    <h2>💼 事件记录（工作）</h2>
+    <div class="sub">工作留痕，按日期随时查看。下方可新增，日历可跳到任意日期。</div>
+    <div class="row">
+      <input id="wDate" type="date" value="${todayStr()}" style="max-width:160px"/>
+      <input id="wTitle" placeholder="事件标题" style="max-width:200px"/>
+      <select id="wTag" style="max-width:120px"><option>会议</option><option>任务</option><option>邮件</option><option>复盘</option><option>其他</option></select>
+    </div>
+    <textarea id="wNote" placeholder="细节 / 结论 / 待办…"></textarea>
+    <button class="btn" id="wAdd" style="margin-top:8px">记录事件</button>
+  </div>`;
+  // 月历
+  const viewYM=load('work_ym',todayStr().slice(0,7));
+  html+=`<div class="card"><h2>📅 工作日历（${viewYM}）</h2>
+    <div class="row"><input id="calYM" type="month" value="${viewYM}" style="max-width:170px"/><button class="btn ghost" id="calGo">查看</button></div>
+    <div class="cal" id="cal" style="margin-top:12px"></div>
+    <div id="calEvents" style="margin-top:12px"></div></div>`;
+  c.innerHTML=html;
+  $('#wAdd').onclick=()=>{
+    const date=$('#wDate').value;const title=$('#wTitle').value.trim();
+    if(!date||!title){toast('请填日期和标题');return;}
+    ev.unshift({date,title,note:$('#wNote').value.trim(),tag:$('#wTag').value});
+    save('work_events',ev);$('#wTitle').value='';$('#wNote').value='';toast('已记录 💼');renderPanel();updateBadges();
+  };
+  function drawCal(){
+    const ym=$('#calYM').value||viewYM;save('work_ym',ym);
+    const [Y,M]=ym.split('-').map(Number);
+    const first=new Date(Y,M-1,1).getDay();const days=new Date(Y,M,0).getDate();
+    const evMap={};ev.forEach(e=>{evMap[e.date]=(evMap[e.date]||0)+1;});
+    let cells='<div class="dow">日</div><div class="dow">一</div><div class="dow">二</div><div class="dow">三</div><div class="dow">四</div><div class="dow">五</div><div class="dow">六</div>';
+    for(let i=0;i<first;i++)cells+='<div class="cell"></div>';
+    for(let dd=1;dd<=days;dd++){
+      const ds=`${ym}-${String(dd).padStart(2,'0')}`;
+      const cls='cell'+(ds===todayStr()?' today':'')+(ds===$('#wDate').value?' sel':'');
+      cells+=`<div class="${cls}" data-ds="${ds}">${dd}${evMap[ds]?`<span class="dot"></span>`:''}</div>`;
+    }
+    $('#cal').innerHTML=cells;
+    $('#cal').querySelectorAll('[data-ds]').forEach(cell=>cell.onclick=()=>{
+      const ds=cell.dataset.ds;$('#wDate').value=ds;
+      const items=ev.filter(e=>e.date===ds);
+      $('#calEvents').innerHTML=`<div class="pill-date">${ds} 共 ${items.length} 条</div>`+
+        (items.length?items.map(x=>`<div class="item"><span class="tag">${x.tag}</span><div class="txt"><b>${esc(x.title)}</b><br/><span style="color:var(--brown-soft);font-size:12px">${esc(x.note||'')}</span></div></div>`).join(''):'<div class="empty">当天无工作记录</div>');
+    });
+  }
+  $('#calGo').onclick=drawCal;drawCal();
+}
+
+/* ---------- 11 成长资源 ---------- */
+const GROWTH=[
+ "建立「成就清单」：每天写下 3 件做成的小事，自信会慢慢长出来。",
+ "学会说「不」：拒绝不属于你的事，是把时间还给自己。",
+ "财务独立从记账开始：看清钱去哪，才能掌控人生。",
+ "培养一项不赚钱也喜欢的爱好，它是你的情绪避风港。",
+ "定期做体检与乳腺筛查，健康是你最大的底气。",
+ "练习「非暴力沟通」，温柔表达也能守住边界。",
+ "建立紧急备用金（3-6 个月开支），安全感来自存款。",
+ "别等准备好了再行动，行动本身会带来准备。",
+ "远离消耗你的人和群，能量很贵要省着用。",
+ "每天阅读 30 分钟，复利效应会在 3 年后显现。",
+ "学会独处：能享受孤独的女生，不会轻易被关系绑架。",
+ "投资自己的形象：得体穿搭是给世界的第一张名片。",
+ "把「我做不到」换成「我怎么才能做到」。",
+ "定期复盘人际关系，留下滋养你的，疏离吸血的。",
+ "掌握基础法律与合同常识，保护自己是成年人的必修课。",
+ "培养运动习惯，身体状态决定你的精气神上限。",
+ "学习基础理财（指数基金/保险），让钱为你工作。",
+ "允许自己休息，休息不是偷懒而是续航。",
+ "建立职业壁垒：把一件事做到别人替代不了。",
+ "练习公众表达，会说话的女生机会更多。",
+];
+function panelGrow(c){
+  const d=todayStr();
+  const idx=Math.abs(hashStr('grow'+d))%GROWTH.length;
+  const tip=GROWTH[idx];
+  let html=`<div class="card">
+    <h2>🌱 成长资源 · 每日一技</h2>
+    <div class="sub">每天一个女性成长必备小技巧，慢慢积累属于你的底气。</div>
+    <div class="book-cover">💡</div>
+    <div class="review-box" style="border-left-color:var(--green);font-size:16px">${tip}</div>
+    <div class="hint">💛 把今天的小技巧变成一个小行动，比收藏 100 条都有用。</div>
+  </div>`;
+  const done=load('grow_done',{});
+  html+=`<div class="card"><h2>✅ 我的成长打卡</h2>
+    <button class="btn green" id="gDone">${done[d]?'今日已实践 ✔':'我实践了今天的技巧'}</button>
+    <div class="hint">已坚持 ${Object.keys(done).length} 天 · 持续行动才是真正的成长。</div></div>`;
+  c.innerHTML=html;
+  $('#gDone').onclick=()=>{done[d]=true;save('grow_done',done);toast('棒！又进步一点点 🌱');renderPanel();};
+}
+
+/* ---------- 工具 ---------- */
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+
+/* ---------- 角标更新 ---------- */
+function updateBadges(){
+  const d=todayStr();
+  const set=(id,n)=>{const b=$('#badge-'+id);if(b){if(n>0){b.style.display='flex';b.textContent=n;}else b.style.display='none';}};
+  set('plan',(load('plan',{})[d]||[]).filter(x=>!x.done).length);
+  set('money',(load('money',{})[d]||[]).length);
+  set('time',(load('time_log',{})[d]||[]).length);
+  set('work',load('work_events',[]).filter(e=>e.date===d).length);
+  // 英语今日新学提醒
+  set('eng',load('eng_learn',{})[d]===undefined?1:0);
+}
+
+/* ---------- 初始化 ---------- */
+function init(){
+  renderNav();renderTop();renderPanel();updateBadges();
+  tick();setInterval(tick,1000);
+}
+init();
+
+/* ---------- PWA：注册 Service Worker（支持"添加到主屏幕"） ---------- */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    try {
+      var swblob = new Blob([`
+const CACHE='xx-miss-app-v1';
+self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(['.','index.html'])).then(()=>self.skipWaiting()));});
+self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith(caches.match(e.request).then(c=>c||fetch(e.request).then(r=>{{const cp=r.clone();caches.open(CACHE).then(c=>c.put(e.request,cp));return r;}}).catch(()=>caches.match('index.html'))));});
+`], {type:'text/javascript'});
+      navigator.serviceWorker.register(URL.createObjectURL(swblob)).catch(()=>{});
+    } catch(e){}
+  });
+}
+</script>
+</body>
+</html>
