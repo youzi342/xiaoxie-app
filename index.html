@@ -401,16 +401,16 @@ function planRender(){
 
 /* ============ ② 英语口语 ============ */
 const SPEECHES=[
-  {en:'The only way to do great work is to love what you do.',cn:'成就伟大工作的唯一方法，就是热爱你所做的事。',tip:'影子跟读：先听一遍，再像影子一样紧随原声复述。'},
-  {en:'Success is not final, failure is not fatal: it is the courage to continue that counts.',cn:'成功并非终点，失败也不是末日，最重要的是继续前行的勇气。',tip:'注意连读：failure is not 要读得连贯。'},
-  {en:'Whether you think you can or you think you can not, you are right.',cn:'无论你认为自己能还是不能，你都是对的。',tip:'重读 think / can，语气要坚定。'},
-  {en:'The future belongs to those who believe in the beauty of their dreams.',cn:'未来属于那些相信梦想之美的人。',tip:'影子跟读时关注 belongs to 的弱读。'},
-  {en:'In the middle of difficulty lies opportunity.',cn:'困难之中蕴藏着机遇。',tip:'练习双元音，拉长一点更地道。'},
-  {en:'Do what you can, with what you have, where you are.',cn:'在你所处的位置，用你拥有的，做你能做的。',tip:'三个 with/where 排比，注意节奏递进。'},
-  {en:'Happiness is not something ready made. It comes from your own actions.',cn:'幸福不是现成的东西，它来自你自己的行动。',tip:'区分 h 和 a 的发音位置。'},
-  {en:'Believe you can and you are halfway there.',cn:'相信自己能做到，你就已经成功了一半。',tip:'halfway 重音在第一个音节。'},
-  {en:'Quality is not an act, it is a habit.',cn:'品质不是一种行为，而是一种习惯。',tip:'注意 not an act 的连读。'},
-  {en:'The best view comes after the hardest climb.',cn:'最好的风景总在最难攀登之后。',tip:'练习 climb 里的发音。'}
+  {type:'老友记', src:'Friends S01E01', en:"Welcome to the real world. It sucks. You're gonna love it!", cn:'欢迎来到现实世界。它糟透了。你会爱上它的！', tip:'Rachel 逃离婚礼后在中央咖啡馆的经典台词，注意 sucks 的 /s/ 轻读与 love it 连读。'},
+  {type:'老友记', src:'Friends S02E03', en:"We were on a break!", cn:'我们当时分手了！（我们只是间歇期！）', tip:'Ross 的经典咆哮，break 发 /breɪk/，重读 on a，情绪要上扬。'},
+  {type:'老友记', src:'Friends S03E02', en:"How you doin'?", cn:'最近怎么样呀？', tip:'Joey 的招牌搭讪，doin 是 doing 的口语缩读，尾音轻轻上挑。'},
+  {type:'老友记', src:'Friends S04E01', en:"I got off the plane. I came here to be with you.", cn:'我下了飞机。我来这里是为了和你在一起。', tip:'Rachel 冲到机场的告白，got off 连读成 /gɔdɔf/，情绪递进到 be with you 放缓。'},
+  {type:'老友记', src:'Friends S05E08', en:"They don't know that we know they know we know.", cn:'他们不知道我们知道他们知道我们知道了。', tip:'绕口令式台词，重点练 they know we know 的节奏分层，每层稍作停顿。'},
+  {type:'TED', src:'Amy Cuddy', en:'Fake it till you become it.', cn:'假装做到，直到你真的做到。', tip:'TED《肢体语言塑造你自己》金句，fake it 与 become it 形成对比，become 重读。'},
+  {type:'TED', src:'Brené Brown', en:'Vulnerability is the birthplace of innovation, creativity and change.', cn:'脆弱是创新、创造与改变的诞生地。', tip:'TED《脆弱的力量》名句，birthplace 重音在前，长句注意 breathe 停顿。'},
+  {type:'TED', src:'Simon Sinek', en:'People do not buy what you do; they buy why you do it.', cn:'人们买的不是你做什么，而是你为什么做。', tip:'TED《伟大的领袖如何激励行动》金句，do not 弱读，why 重读形成对比。'},
+  {type:'TED', src:'Tim Urban', en:'The brain is a muscle that can be trained.', cn:'大脑是一块可以被训练的肌肉。', tip:'TED《拖延症》轻松开场，trained 的 /d/ 轻爆破，muscle 注意 /ʌ/ 发音。'},
+  {type:'TED', src:'Kelly McGonigal', en:'Stress is not the enemy. How you think about stress matters.', cn:'压力不是敌人。你如何看待压力，才真正重要。', tip:'TED《如何让压力成为朋友》金句，enemy 重读，matters 尾音下沉。'}
 ];
 const EB={0:1,1:2,2:4,3:7,4:15};
 function speechForDate(){
