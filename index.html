@@ -73,7 +73,7 @@
   .quote .en{font-size:10.5px;color:var(--brown-soft);font-style:italic;margin-top:2px;line-height:1.2;}
   .checkin{
     background:var(--yellow-deep);color:#fff;border:none;border-radius:20px;
-    padding:8px 15px;font-weight:700;font-size:12.5px;cursor:pointer;
+    padding:8px 15px;font-weight:700;font-size:20px;cursor:pointer;
     box-shadow:var(--shadow);transition:.18s;display:flex;align-items:center;gap:5px;white-space:nowrap;
   }
   .checkin:hover{transform:scale(1.04);}
@@ -89,20 +89,20 @@
   @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
 
   .card{background:var(--card);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin-bottom:18px;border:1px solid var(--line);}
-  .card h2{font-size:21px;margin-bottom:4px;display:flex;align-items:center;gap:8px;color:var(--brown);}
-  .card .sub{color:var(--brown-soft);font-size:15px;margin-bottom:16px;line-height:1.6;}
-  .card h3{font-size:17.5px;margin:18px 0 10px;color:var(--yellow-deep);}
+  .card h2{font-size:26px;margin-bottom:4px;display:flex;align-items:center;gap:8px;color:var(--brown);}
+  .card .sub{color:var(--brown-soft);font-size:18px;margin-bottom:16px;line-height:1.6;}
+  .card h3{font-size:22px;margin:18px 0 10px;color:var(--yellow-deep);}
 
   input,textarea,select{
     width:100%;border:1.5px solid var(--line);border-radius:12px;
-    padding:12px 14px;font-size:16px;color:var(--brown);background:var(--yellow-cream);
+    padding:12px 14px;font-size:22px;color:var(--brown);background:var(--yellow-cream);
     outline:none;transition:.15s;font-family:inherit;
   }
   input:focus,textarea:focus,select:focus{border-color:var(--yellow-deep);background:#fff;}
   textarea{resize:vertical;min-height:64px;}
   button.btn{
     background:var(--yellow-deep);color:#fff;border:none;border-radius:20px;
-    padding:12px 22px;font-weight:700;font-size:16px;cursor:pointer;transition:.15s;
+    padding:12px 22px;font-weight:700;font-size:22px;cursor:pointer;transition:.15s;
     box-shadow:var(--shadow);white-space:nowrap;
   }
   button.btn:hover{transform:translateY(-1px);filter:brightness(1.04);}
@@ -115,15 +115,15 @@
   .row > *{flex:0 0 auto;}
   .grow{flex:1 1 120px !important;min-width:120px;}
 
-  .tag{display:inline-block;background:var(--yellow-cream);color:var(--brown);border-radius:12px;padding:3px 10px;font-size:11.5px;font-weight:700;margin:2px 3px 2px 0;border:1px solid var(--line);}
+  .tag{display:inline-block;background:var(--yellow-cream);color:var(--brown);border-radius:12px;padding:3px 10px;font-size:18px;font-weight:700;margin:2px 3px 2px 0;border:1px solid var(--line);}
   .tag.big{font-size:13px;padding:5px 12px;}
 
   .item{background:var(--yellow-cream);border-radius:12px;padding:13px 15px;margin-bottom:9px;display:flex;align-items:center;gap:10px;border:1.5px solid transparent;}
   .item:hover{border-color:var(--yellow);}
-  .item .txt{flex:1;font-size:16px;line-height:1.5;}
+  .item .txt{flex:1;font-size:22px;line-height:1.5;}
   .item.done .txt{text-decoration:line-through;color:var(--brown-soft);}
   .item .act{display:flex;gap:6px;flex-shrink:0;}
-  .mini-btn{border:none;background:#fff;border-radius:9px;padding:6px 12px;cursor:pointer;font-size:13.5px;font-weight:700;color:var(--brown-soft);border:1px solid var(--line);}
+  .mini-btn{border:none;background:#fff;border-radius:9px;padding:6px 12px;cursor:pointer;font-size:18px;font-weight:700;color:var(--brown-soft);border:1px solid var(--line);}
   .mini-btn:hover{background:var(--yellow-soft);color:var(--brown);}
   .mini-btn.del{color:var(--red);}
   .mini-btn.del:hover{background:var(--red);color:#fff;border-color:var(--red);}
@@ -166,15 +166,15 @@
   .tile .jump a:hover{background:var(--yellow-soft);}
   .tile .src{font-size:12px;color:var(--brown-soft);background:#fff;border-radius:8px;padding:2px 8px;display:inline-block;margin-bottom:2px;border:1px solid var(--line);}
 
-  .report{background:var(--yellow-cream);border-radius:14px;padding:16px;border-left:4px solid var(--yellow-deep);font-size:15.5px;line-height:1.8;color:var(--brown);}
-  .report h4{color:var(--yellow-deep);margin:12px 0 5px;font-size:16px;}
+  .report{background:var(--yellow-cream);border-radius:14px;padding:16px;border-left:4px solid var(--yellow-deep);font-size:22px;line-height:1.8;color:var(--brown);}
+  .report h4{color:var(--yellow-deep);margin:12px 0 5px;font-size:22px;}
   .review-list{list-style:none;counter-reset:rv;}
-  .review-list li{counter-increment:rv;background:#fff;border-radius:10px;padding:11px 14px;margin-bottom:8px;font-size:14.5px;line-height:1.6;border:1px solid var(--line);position:relative;padding-left:38px;}
+  .review-list li{counter-increment:rv;background:#fff;border-radius:10px;padding:11px 14px;margin-bottom:8px;font-size:22px;line-height:1.6;border:1px solid var(--line);position:relative;padding-left:38px;}
   .review-list li::before{content:counter(rv);position:absolute;left:11px;top:11px;width:20px;height:20px;background:var(--yellow-deep);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;}
 
   .water-grid{display:grid;grid-template-columns:1fr;gap:10px;}
   .water-card{background:var(--yellow-cream);border-radius:14px;padding:15px 18px;text-align:left;border:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
-  .water-card .t{font-weight:800;font-size:16px;color:var(--brown);}
+  .water-card .t{font-weight:800;font-size:22px;color:var(--brown);}
   .water-card .amt{font-size:20px;font-weight:800;color:var(--blue);}
   .water-card .st{font-size:13px;color:var(--brown-soft);}
   .water-card.done{background:var(--green);border-color:var(--green);}
@@ -193,16 +193,16 @@
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
   .empty{text-align:center;color:var(--brown-soft);padding:18px;font-size:13px;}
-  .pill{font-size:11.5px;color:var(--brown-soft);background:var(--yellow-cream);border-radius:10px;padding:3px 10px;border:1px solid var(--line);}
+  .pill{font-size:18px;color:var(--brown-soft);background:var(--yellow-cream);border-radius:10px;padding:3px 10px;border:1px solid var(--line);}
   .seg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
-  .seg button{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:6px 13px;font-weight:700;cursor:pointer;color:var(--brown-soft);font-size:12.5px;}
+  .seg button{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:6px 13px;font-weight:700;cursor:pointer;color:var(--brown-soft);font-size:20px;}
   .seg button.on{background:var(--yellow-deep);color:#fff;border-color:var(--yellow-deep);}
 
-  table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px;}
+  table{width:100%;border-collapse:collapse;font-size:18px;margin-top:6px;}
   th,td{border:1px solid var(--line);padding:7px;text-align:left;}
   th{background:var(--yellow-cream);}
 
-  .hint{background:var(--yellow-cream);border-left:3px solid var(--yellow-deep);border-radius:0 12px 12px 0;padding:9px 13px;font-size:12.5px;color:var(--brown);margin:8px 0;line-height:1.5;}
+  .hint{background:var(--yellow-cream);border-left:3px solid var(--yellow-deep);border-radius:0 12px 12px 0;padding:9px 13px;font-size:18px;color:var(--brown);margin:8px 0;line-height:1.5;}
 
   @media(max-width:760px){
     .sidebar{width:150px;padding:10px 6px;}
@@ -438,9 +438,9 @@ function engRender(){
       '<div class="sub">每日推荐 1 段「老友记经典对话」或「TED 三分钟演讲」+ 影子跟读提示，并按艾宾浩斯遗忘曲线安排复习。</div>'+
       '<div style="background:var(--yellow-cream);border-left:4px solid var(--pink);border-radius:14px;padding:16px;margin:10px 0">'+
         '<div style="font-size:13px;font-weight:800;color:var(--yellow-deep);margin-bottom:4px">🎬 '+esc(sp.type)+' · '+esc(sp.src)+'</div>'+
-        '<div style="font-size:16px;font-weight:800;color:var(--brown)">'+esc(sp.en)+'</div>'+
+        '<div style="font-size:22px;font-weight:800;color:var(--brown)">'+esc(sp.en)+'</div>'+
         '<div style="color:var(--brown-soft);font-size:13px;margin:6px 0">'+esc(sp.cn)+'</div>'+
-        '<div style="font-size:12.5px;color:var(--yellow-deep);background:#fff;border-radius:10px;padding:8px 11px;margin-top:6px">💡 跟读技巧：'+esc(sp.tip)+'</div>'+
+        '<div style="font-size:20px;color:var(--yellow-deep);background:#fff;border-radius:10px;padding:8px 11px;margin-top:6px">💡 跟读技巧：'+esc(sp.tip)+'</div>'+
         '<div class="row" style="margin-top:12px">'+
           '<button class="btn" id="speak">🔊 听一听</button>'+
           '<button class="btn green" id="shadow">🌟 完成影子跟读</button>'+
@@ -454,7 +454,7 @@ function engRender(){
   if(!learn.length){ rv.innerHTML='<div class="empty">今天没有待复习内容，棒棒哒 🎉</div>'; }
   learn.forEach(function(t){
     const d=document.createElement('div'); d.className='item';
-    d.innerHTML='<div class="txt"><b>'+esc(t.en)+'</b><br><span style="font-size:11.5px;color:var(--brown-soft)">下次：'+t.next+'</span></div>'+
+    d.innerHTML='<div class="txt"><b>'+esc(t.en)+'</b><br><span style="font-size:18px;color:var(--brown-soft)">下次：'+t.next+'</span></div>'+
       '<div class="act"><button class="mini-btn" data-s="'+t.id+'">听</button><button class="mini-btn del" data-x="'+t.id+'">已会</button></div>';
     rv.appendChild(d);
   });
@@ -566,8 +566,8 @@ function bookRender(){
       '<div class="row" style="align-items:flex-start">'+
         '<div style="font-size:48px">'+b.emoji+'</div>'+
         '<div style="flex:1">'+
-          '<div style="font-weight:800;font-size:16px">《'+b.t+'》</div>'+
-          '<div style="font-size:12.5px;color:var(--brown-soft)">'+b.a+'</div>'+
+          '<div style="font-weight:800;font-size:22px">《'+b.t+'》</div>'+
+          '<div style="font-size:20px;color:var(--brown-soft)">'+b.a+'</div>'+
           '<a href="'+snail+'" target="_blank" rel="noopener" class="tag big" style="margin-top:6px;background:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:4px">🐌 去蜗牛读书看全书</a>'+
         '</div>'+
       '</div>'+
@@ -866,7 +866,7 @@ function workRender(){
   if(!list.length) wl.innerHTML='<div class="empty">今天还没有工作记录</div>';
   list.sort(function(a,b){ return b.id.localeCompare(a.id); }).forEach(function(e){
     const d=document.createElement('div'); d.className='item';
-    d.innerHTML='<div class="txt"><span class="tag">'+(e.tag||'其他')+'</span> <b>'+esc(e.title)+'</b><br><span style="font-size:11.5px;color:var(--brown-soft)">'+esc(e.detail||'')+'</span></div>'+
+    d.innerHTML='<div class="txt"><span class="tag">'+(e.tag||'其他')+'</span> <b>'+esc(e.title)+'</b><br><span style="font-size:18px;color:var(--brown-soft)">'+esc(e.detail||'')+'</span></div>'+
       '<div class="act"><button class="mini-btn del" data-d="'+e.id+'">删</button></div>';
     wl.appendChild(d);
   });
@@ -876,7 +876,7 @@ function workRender(){
     const dv=$('#wdate').value; const arr=evs.filter(function(e){ return e.date===dv; });
     const box=$('#wbydate');
     if(!arr.length){ box.innerHTML='<div class="empty">该日无工作记录</div>'; return; }
-    box.innerHTML=arr.map(function(e){ return '<div class="item"><div class="txt"><span class="tag">'+(e.tag||'其他')+'</span> <b>'+esc(e.title)+'</b><br><span style="font-size:11.5px;color:var(--brown-soft)">'+esc(e.detail||'')+'</span></div></div>'; }).join('');
+    box.innerHTML=arr.map(function(e){ return '<div class="item"><div class="txt"><span class="tag">'+(e.tag||'其他')+'</span> <b>'+esc(e.title)+'</b><br><span style="font-size:18px;color:var(--brown-soft)">'+esc(e.detail||'')+'</span></div></div>'; }).join('');
   };
   navBadge('work', list.length);
 }
@@ -920,7 +920,7 @@ function growRender(){
   const gr=$('#gRecent');
   recent.slice(1).forEach(function(r){
     const d0=document.createElement('div'); d0.className='tip';
-    d0.innerHTML='<div class="day">'+r.dd+'</div><div class="ttl" style="font-size:13.5px">'+r.t+'</div><div class="ex">'+r.ex+'</div>';
+    d0.innerHTML='<div class="day">'+r.dd+'</div><div class="ttl" style="font-size:20px">'+r.t+'</div><div class="ex">'+r.ex+'</div>';
     gr.appendChild(d0);
   });
   navBadge('grow',0);
