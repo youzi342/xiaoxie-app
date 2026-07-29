@@ -1,14 +1,14 @@
 {
   "name": "小谢小姐的app",
   "short_name": "小谢小姐",
-  "description": "小谢小姐的专属黄色可爱风格个人工作台",
+  "description": "小谢小姐的专属ins黄色柔和系个人工作台",
   "lang": "zh-CN",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#F5F5F5",
-  "theme_color": "#2C2C2C",
+  "background_color": "#FFFCF5",
+  "theme_color": "#F4B740",
   "icons": [
     {
       "src": "icon-192.png",
