@@ -179,6 +179,14 @@
   .book-panel .report{font-size:24px;line-height:1.8;}
   .book-panel .review-list li{font-size:24px;line-height:1.6;}
   .book-panel .bk-author{font-size:24px;color:var(--brown-soft);margin-top:2px;}
+  /* 英语口语模块：整体统一 30px */
+  .eng-panel h2,.eng-panel .sub,.eng-panel h3{font-size:30px;}
+  .eng-panel h2{font-size:30px;}
+  .eng-panel .sub{font-size:30px;line-height:1.6;}
+  .eng-panel h3{font-size:30px;}
+  .eng-panel #cnbox{font-size:30px;line-height:1.7;}
+  .eng-panel .item .txt b{font-size:30px;}
+  .eng-panel .item .txt span{font-size:30px;}
 
   .water-grid{display:grid;grid-template-columns:1fr;gap:10px;}
   .water-card{background:var(--yellow-cream);border-radius:14px;padding:15px 18px;text-align:left;border:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
@@ -437,24 +445,40 @@ function engRender(){
   const sp=speechForDate();
   let rec=store.get('eng_rec',{});
   const key=sp.en.slice(0,20);
-  if(!rec[key]) rec[key]={stage:0,next:today(),last:today()};
+  if(!rec[key]) rec[key]={stage:0,next:today(),last:today(),shadow:{count:0,last:''},recite:{count:0,last:''}};
+  if(!rec[key].shadow) rec[key].shadow={count:0,last:''};
+  if(!rec[key].recite) rec[key].recite={count:0,last:''};
   const r=rec[key];
   let tasks=store.get('eng_tasks',[]);
   const learn=tasks.filter(function(t){ return t.next<=today(); });
   p.innerHTML=
-    '<div class="card">'+
+    '<div class="card eng-panel">'+
       '<h2>🗣️ 英语口语</h2>'+
-      '<div class="sub">每日推荐 1 段「老友记经典对话」或「TED 三分钟演讲」+ 影子跟读提示，并按艾宾浩斯遗忘曲线安排复习。</div>'+
+      '<div class="sub">每日推荐 1 段「老友记经典对话」或「TED 三分钟演讲」，强化影子跟读 + 背诵默写打卡，按艾宾浩斯遗忘曲线安排复习。</div>'+
+      '<div class="stat-grid" style="grid-template-columns:repeat(2,1fr)">'+
+        '<div class="stat"><div class="num">'+r.shadow.count+'</div><div class="lab">累计影子跟读</div></div>'+
+        '<div class="stat"><div class="num">'+r.recite.count+'</div><div class="lab">累计背诵默写</div></div>'+
+      '</div>'+
       '<div style="background:var(--yellow-cream);border-left:4px solid var(--pink);border-radius:14px;padding:16px;margin:10px 0">'+
-        '<div style="font-size:13px;font-weight:800;color:var(--yellow-deep);margin-bottom:4px">🎬 '+esc(sp.type)+' · '+esc(sp.src)+'</div>'+
-        '<div style="font-size:24px;font-weight:800;color:var(--brown)">'+esc(sp.en)+'</div>'
-        '<div style="color:var(--brown-soft);font-size:13px;margin:6px 0">'+esc(sp.cn)+'</div>'+
-        '<div style="font-size:20px;color:var(--yellow-deep);background:#fff;border-radius:10px;padding:8px 11px;margin-top:6px">💡 跟读技巧：'+esc(sp.tip)+'</div>'+
-        '<div class="row" style="margin-top:12px">'+
+        '<div style="font-weight:800;color:var(--yellow-deep);margin-bottom:4px">🎬 '+esc(sp.type)+' · '+esc(sp.src)+'</div>'+
+        '<div style="font-weight:800;color:var(--brown)">'+esc(sp.en)+'</div>'+
+        '<div id="cnbox" style="color:var(--brown-soft);margin:6px 0">'+esc(sp.cn)+'</div>'+
+        '<div style="color:var(--yellow-deep);background:#fff;border-radius:10px;padding:8px 11px;margin-top:6px">💡 跟读技巧：'+esc(sp.tip)+'</div>'+
+        '<div class="row" style="margin-top:12px;flex-wrap:wrap">'+
           '<button class="btn" id="speak">🔊 听一听</button>'+
-          '<button class="btn green" id="shadow">🌟 完成影子跟读</button>'+
-          '<button class="btn pink" id="review">📖 标记复习完成</button>'+
+          '<button class="btn green" id="shadow">🌟 影子跟读</button>'+
+          '<button class="btn pink" id="review">📖 复习完成</button>'+
         '</div>'+
+        '<div id="shadowTip" style="margin-top:8px;color:var(--green);font-weight:700;display:none"></div>'+
+      '</div>'+
+      '<div style="background:var(--yellow-cream);border-left:4px solid var(--blue);border-radius:14px;padding:16px;margin:10px 0">'+
+        '<div style="font-weight:800;color:var(--blue);margin-bottom:8px">✍️ 背诵默写打卡</div>'+
+        '<div style="color:var(--brown-soft);margin-bottom:8px">隐藏中文，凭记忆背诵/默写，再点「显示对照」自检。</div>'+
+        '<div class="row" style="flex-wrap:wrap">'+
+          '<button class="btn" id="toggleCn">👁️ 隐藏/显示中文</button>'+
+          '<button class="btn blue" id="recite">✅ 我已背会/默写完成</button>'+
+        '</div>'+
+        '<div id="reciteTip" style="margin-top:8px;color:var(--blue);font-weight:700;display:none"></div>'+
       '</div>'+
       '<h3>📚 待复习（'+learn.length+'）</h3>'+
       '<div id="erev"></div>'+
@@ -463,7 +487,7 @@ function engRender(){
   if(!learn.length){ rv.innerHTML='<div class="empty">今天没有待复习内容，棒棒哒 🎉</div>'; }
   learn.forEach(function(t){
     const d=document.createElement('div'); d.className='item';
-    d.innerHTML='<div class="txt"><b>'+esc(t.en)+'</b><br><span style="font-size:24px;color:var(--brown-soft)">下次：'+t.next+'</span></div>'+
+    d.innerHTML='<div class="txt"><b>'+esc(t.en)+'</b><br><span style="color:var(--brown-soft)">下次：'+t.next+'</span></div>'+
       '<div class="act"><button class="mini-btn" data-s="'+t.id+'">听</button><button class="mini-btn del" data-x="'+t.id+'">已会</button></div>';
     rv.appendChild(d);
   });
@@ -471,13 +495,22 @@ function engRender(){
   rv.querySelectorAll('[data-x]').forEach(function(b){ b.onclick=function(){ tasks=tasks.filter(function(x){ return x.id!==b.dataset.x; }); store.set('eng_tasks',tasks); engRender(); }; });
   $('#speak').onclick=function(){ speak(sp.en); };
   $('#shadow').onclick=function(){
-    toast('开始影子跟读：先听，再跟读 🗣️');
-    speak(sp.en); setTimeout(function(){ speak(sp.en); },2600);
-    if(!tasks.find(function(t){ return t.en===sp.en; })){
-      const stage=Math.min(r.stage+1,4);
-      tasks.push({id:uid(),en:sp.en,next:addDays(today(), EB[stage]||30)});
-      store.set('eng_tasks',tasks);
-    }
+    const tip=$('#shadowTip'); tip.style.display='block';
+    tip.textContent='👄 第 1 遍：仔细听原音…';
+    speak(sp.en);
+    setTimeout(function(){ tip.textContent='👄 现在跟着念出来（影子跟读）…'; },2600);
+    setTimeout(function(){ tip.textContent='👄 第 2 遍：再听一次对照自己的发音'; },4200);
+    setTimeout(function(){
+      tip.textContent='✅ 影子跟读完成，已打卡！累计 '+(r.shadow.count+1)+' 次';
+      r.shadow.count=r.shadow.count+1; r.shadow.last=today();
+      rec[key]=r; store.set('eng_rec',rec);
+      if(!tasks.find(function(t){ return t.en===sp.en; })){
+        const stage=Math.min(r.stage+1,4);
+        tasks.push({id:uid(),en:sp.en,next:addDays(today(),EB[stage]||30)});
+        store.set('eng_tasks',tasks);
+      }
+      setTimeout(engRender,1200);
+    },6400);
   };
   $('#review').onclick=function(){
     const stage=Math.min(r.stage+1,4);
@@ -485,6 +518,19 @@ function engRender(){
     rec[key]=r; store.set('eng_rec',rec);
     if(!tasks.find(function(t){ return t.en===sp.en; })){ tasks.push({id:uid(),en:sp.en,next:r.next}); store.set('eng_tasks',tasks); }
     toast('已安排下次复习：'+r.next+' 💡'); engRender();
+  };
+  let cnHidden=false;
+  $('#toggleCn').onclick=function(){
+    cnHidden=!cnHidden;
+    $('#cnbox').style.display=cnHidden?'none':'block';
+    this.textContent=cnHidden?'👁️ 显示中文':'👁️ 隐藏/显示中文';
+  };
+  $('#recite').onclick=function(){
+    const tip=$('#reciteTip'); tip.style.display='block';
+    r.recite.count=r.recite.count+1; r.recite.last=today();
+    rec[key]=r; store.set('eng_rec',rec);
+    tip.textContent='📝 已打卡！累计背诵 '+r.recite.count+' 次（'+r.recite.last+'）';
+    toast('背诵默写打卡 +1 ✅');
   };
   navBadge('eng', learn.length);
 }
