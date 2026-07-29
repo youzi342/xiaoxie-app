@@ -188,6 +188,23 @@
   .eng-panel .eng-en{font-size:30px;line-height:1.5;}
   .eng-panel .item .txt b{font-size:30px;}
   .eng-panel .item .txt span{font-size:30px;}
+  /* 每日穿搭 / 每日新闻 / 好好吃饭：整体统一 30px */
+  .fit-panel h2,.news-panel h2,.food-panel h2{font-size:30px;}
+  .fit-panel .sub,.news-panel .sub,.food-panel .sub{font-size:30px;line-height:1.6;}
+  .fit-panel h3,.news-panel h3,.food-panel h3{font-size:30px;}
+  .fit-panel .tt,.news-panel .tt,.food-panel .tt{font-size:30px;}
+  .fit-panel .td,.news-panel .td,.food-panel .td{font-size:30px;line-height:1.6;}
+  .fit-panel .src,.news-panel .src,.food-panel .src{font-size:26px;}
+  .fit-panel .jump a,.news-panel .jump a,.food-panel .jump a{font-size:26px;}
+  .fit-panel .item .txt,.news-panel .item .txt,.food-panel .item .txt{font-size:30px;}
+  .fit-panel .report,.news-panel .report,.food-panel .report{font-size:30px;line-height:1.8;}
+  .fit-panel .report h4,.news-panel .report h4,.food-panel .report h4{font-size:30px;}
+  .fit-panel .hint,.news-panel .hint,.food-panel .hint{font-size:26px;}
+  .fit-panel .grow,.news-panel .grow,.food-panel .grow{font-size:30px;}
+  .fit-panel .btn,.news-panel .btn,.food-panel .btn{font-size:30px;}
+  .fit-panel .mini-btn,.news-panel .mini-btn,.food-panel .mini-btn{font-size:26px;}
+  .fit-panel .seg button,.news-panel .seg button,.food-panel .seg button{font-size:30px;}
+  .fit-panel .empty,.news-panel .empty,.food-panel .empty{font-size:26px;}
 
   .water-grid{display:grid;grid-template-columns:1fr;gap:10px;}
   .water-card{background:var(--yellow-cream);border-radius:14px;padding:15px 18px;text-align:left;border:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
@@ -808,7 +825,7 @@ function fitRender(){
   const p=panel('fit');
   const myClothes=store.get('my_clothes',[]);
   p.innerHTML=
-    '<div class="card">'+
+    '<div class="card fit-panel">'+
       '<h2>👗 每日穿搭</h2>'+
       '<div class="sub">你的身材：153cm / 59kg（娇小匀称型）。结合小红书·B站·抖音每日推荐得体穿搭，视频一键跳转原平台；也可输入已有衣物获取搭配建议。</div>'+
       '<h3>🎬 今日灵感（点击跳转原平台看视频）</h3>'+
@@ -868,7 +885,7 @@ const NEWS=[
 function newsRender(){
   const p=panel('news');
   p.innerHTML=
-    '<div class="card">'+
+    '<div class="card news-panel">'+
       '<h2>📰 每日新闻</h2>'+
       '<div class="sub">每日精选爆点新闻 + 简明财经，点击卡片一键跳转原平台看详情。</div>'+
       '<div class="grid" id="ng"></div>'+
@@ -903,7 +920,7 @@ const FOODS=[
 function foodRender(){
   const p=panel('food');
   p.innerHTML=
-    '<div class="card">'+
+    '<div class="card food-panel">'+
       '<h2>🍱 好好吃饭</h2>'+
       '<div class="sub">结合小红书·抖音博主推荐的一人食减脂午晚餐，附估算热量与图片占位，点击跳转原平台看做法。</div>'+
       '<div class="seg" id="fseg">'+
