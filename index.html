@@ -451,10 +451,11 @@ function engRender(){
   const r=rec[key];
   let tasks=store.get('eng_tasks',[]);
   const learn=tasks.filter(function(t){ return t.next<=today(); });
+  const norm=function(s){ return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim(); };
   p.innerHTML=
     '<div class="card eng-panel">'+
       '<h2>🗣️ 英语口语</h2>'+
-      '<div class="sub">每日推荐 1 段「老友记经典对话」或「TED 三分钟演讲」，强化影子跟读 + 背诵默写打卡，按艾宾浩斯遗忘曲线安排复习。</div>'+
+      '<div class="sub">每日推荐 1 段「老友记经典对话」或「TED 三分钟演讲」，强化影子跟读（可录音对比）+ 背诵默写（自动判分），按艾宾浩斯遗忘曲线安排复习。</div>'+
       '<div class="stat-grid" style="grid-template-columns:repeat(2,1fr)">'+
         '<div class="stat"><div class="num">'+r.shadow.count+'</div><div class="lab">累计影子跟读</div></div>'+
         '<div class="stat"><div class="num">'+r.recite.count+'</div><div class="lab">累计背诵默写</div></div>'+
@@ -465,19 +466,32 @@ function engRender(){
         '<div id="cnbox" style="color:var(--brown-soft);margin:6px 0">'+esc(sp.cn)+'</div>'+
         '<div style="color:var(--yellow-deep);background:#fff;border-radius:10px;padding:8px 11px;margin-top:6px">💡 跟读技巧：'+esc(sp.tip)+'</div>'+
         '<div class="row" style="margin-top:12px;flex-wrap:wrap">'+
-          '<button class="btn" id="speak">🔊 听一听</button>'+
+          '<button class="btn" id="speak">🔊 听原音</button>'+
           '<button class="btn green" id="shadow">🌟 影子跟读</button>'+
           '<button class="btn pink" id="review">📖 复习完成</button>'+
         '</div>'+
+        '<div class="row" style="margin-top:6px;flex-wrap:wrap">'+
+          '<button class="btn" id="recStart">🎙️ 录音跟读</button>'+
+          '<button class="btn red" id="recStop" style="display:none">⏹️ 停止并回放</button>'+
+        '</div>'+
+        '<div id="audioBox" style="margin-top:8px"></div>'+
         '<div id="shadowTip" style="margin-top:8px;color:var(--green);font-weight:700;display:none"></div>'+
       '</div>'+
       '<div style="background:var(--yellow-cream);border-left:4px solid var(--blue);border-radius:14px;padding:16px;margin:10px 0">'+
-        '<div style="font-weight:800;color:var(--blue);margin-bottom:8px">✍️ 背诵默写打卡</div>'+
-        '<div style="color:var(--brown-soft);margin-bottom:8px">隐藏中文，凭记忆背诵/默写，再点「显示对照」自检。</div>'+
-        '<div class="row" style="flex-wrap:wrap">'+
+        '<div style="font-weight:800;color:var(--blue);margin-bottom:8px">✍️ 背诵默写打卡（自动判分）</div>'+
+        '<div style="color:var(--brown-soft);margin-bottom:8px">先隐藏原文，凭记忆默写出这句英文，提交后自动比对判分。</div>'+
+        '<div class="row" style="flex-wrap:wrap;margin-bottom:8px">'+
+          '<button class="btn" id="toggleEn">👁️ 隐藏/显示原文</button>'+
           '<button class="btn" id="toggleCn">👁️ 隐藏/显示中文</button>'+
-          '<button class="btn blue" id="recite">✅ 我已背会/默写完成</button>'+
         '</div>'+
+        '<div id="enbox" style="font-weight:800;color:var(--brown);margin-bottom:8px">'+esc(sp.en)+'</div>'+
+        '<textarea id="dictInput" placeholder="在此默写出英文…" style="width:100%;min-height:70px;font-size:22px;padding:10px;border-radius:12px;border:2px solid var(--line);font-family:inherit;resize:vertical"></textarea>'+
+        '<div class="row" style="margin-top:8px;flex-wrap:wrap">'+
+          '<button class="btn blue" id="check">🔍 提交判分</button>'+
+          '<button class="btn" id="showAns">💡 看答案</button>'+
+          '<button class="btn green" id="recite" style="display:none">✅ 打卡（默写正确）</button>'+
+        '</div>'+
+        '<div id="dictResult" style="margin-top:8px;font-weight:700;display:none"></div>'+
         '<div id="reciteTip" style="margin-top:8px;color:var(--blue);font-weight:700;display:none"></div>'+
       '</div>'+
       '<h3>📚 待复习（'+learn.length+'）</h3>'+
@@ -512,6 +526,40 @@ function engRender(){
       setTimeout(engRender,1200);
     },6400);
   };
+  // 录音跟读
+  let mediaRec=null, recChunks=[], recStream=null;
+  $('#recStart').onclick=function(){
+    const self=this;
+    if(!navigator.mediaDevices || !window.MediaRecorder){ toast('当前浏览器不支持录音'); return; }
+    navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
+      recStream=stream; recChunks=[];
+      mediaRec=new MediaRecorder(stream);
+      mediaRec.ondataavailable=function(e){ if(e.data.size>0) recChunks.push(e.data); };
+      mediaRec.onstop=function(){
+        const blob=new Blob(recChunks,{type:mediaRec.mimeType||'audio/webm'});
+        const url=URL.createObjectURL(blob);
+        $('#audioBox').innerHTML='<div style="color:var(--brown-soft);margin-bottom:4px">🔁 你的跟读录音：</div><audio controls src="'+url+'"></audio>';
+        stream.getTracks().forEach(function(t){ t.stop(); });
+        // 录音完成也算一次影子跟读打卡
+        r.shadow.count=r.shadow.count+1; r.shadow.last=today();
+        rec[key]=r; store.set('eng_rec',rec);
+        $('#shadowTip').style.display='block';
+        $('#shadowTip').textContent='✅ 录音跟读完成，已打卡！累计 '+r.shadow.count+' 次';
+        if(!tasks.find(function(t){ return t.en===sp.en; })){
+          const stage=Math.min(r.stage+1,4);
+          tasks.push({id:uid(),en:sp.en,next:addDays(today(),EB[stage]||30)});
+          store.set('eng_tasks',tasks);
+        }
+      };
+      mediaRec.start();
+      self.style.display='none'; $('#recStop').style.display='inline-block';
+      toast('录音中，跟读吧 🎙️');
+    }).catch(function(){ toast('无法访问麦克风，请检查权限'); });
+  };
+  $('#recStop').onclick=function(){
+    if(mediaRec && mediaRec.state!=='inactive') mediaRec.stop();
+    this.style.display='none'; $('#recStart').style.display='inline-block';
+  };
   $('#review').onclick=function(){
     const stage=Math.min(r.stage+1,4);
     r.stage=stage; r.next=addDays(today(),EB[stage]||30); r.last=today();
@@ -519,16 +567,45 @@ function engRender(){
     if(!tasks.find(function(t){ return t.en===sp.en; })){ tasks.push({id:uid(),en:sp.en,next:r.next}); store.set('eng_tasks',tasks); }
     toast('已安排下次复习：'+r.next+' 💡'); engRender();
   };
-  let cnHidden=false;
+  let enHidden=false, cnHidden=false;
+  $('#toggleEn').onclick=function(){
+    enHidden=!enHidden;
+    $('#enbox').style.display=enHidden?'none':'block';
+    this.textContent=enHidden?'👁️ 显示原文':'👁️ 隐藏/显示原文';
+  };
   $('#toggleCn').onclick=function(){
     cnHidden=!cnHidden;
     $('#cnbox').style.display=cnHidden?'none':'block';
     this.textContent=cnHidden?'👁️ 显示中文':'👁️ 隐藏/显示中文';
   };
+  $('#check').onclick=function(){
+    const val=$('#dictInput').value;
+    const res=$('#dictResult');
+    if(!val.trim()){ res.style.display='block'; res.style.color='var(--red)'; res.textContent='✍️ 先写出你的默写再提交哦'; return; }
+    const ok=norm(val)===norm(sp.en);
+    res.style.display='block';
+    if(ok){
+      res.style.color='var(--green)';
+      res.textContent='🎉 完全正确！可以打卡啦';
+      $('#recite').style.display='inline-block';
+      r.recite.count=r.recite.count+1; r.recite.last=today();
+      rec[key]=r; store.set('eng_rec',rec);
+      const tip=$('#reciteTip'); tip.style.display='block';
+      tip.textContent='📝 已打卡！累计背诵 '+r.recite.count+' 次（'+r.recite.last+'）';
+      toast('背诵默写打卡 +1 ✅');
+    } else {
+      res.style.color='var(--red)';
+      const u=val.split(/\s+/), a=sp.en.split(/\s+/);
+      let wrong=0; for(let i=0;i<Math.max(u.length,a.length);i++){ if(norm(u[i]||'')!==norm(a[i]||'')) wrong++; }
+      res.textContent='❌ 有 '+wrong+' 处不一致，对照原文再练练～ 点「看答案」核对';
+    }
+  };
+  $('#showAns').onclick=function(){
+    $('#enbox').style.display='block'; enHidden=false; $('#toggleEn').textContent='👁️ 隐藏/显示原文';
+    $('#cnbox').style.display='block'; cnHidden=false; $('#toggleCn').textContent='👁️ 隐藏/显示中文';
+  };
   $('#recite').onclick=function(){
     const tip=$('#reciteTip'); tip.style.display='block';
-    r.recite.count=r.recite.count+1; r.recite.last=today();
-    rec[key]=r; store.set('eng_rec',rec);
     tip.textContent='📝 已打卡！累计背诵 '+r.recite.count+' 次（'+r.recite.last+'）';
     toast('背诵默写打卡 +1 ✅');
   };
