@@ -205,6 +205,29 @@
   .fit-panel .mini-btn,.news-panel .mini-btn,.food-panel .mini-btn{font-size:26px;}
   .fit-panel .seg button,.news-panel .seg button,.food-panel .seg button{font-size:30px;}
   .fit-panel .empty,.news-panel .empty,.food-panel .empty{font-size:26px;}
+  /* 天天喝水 / 时间记录 / 事件记录 / 成长资源：整体统一 30px */
+  .water-panel h2,.time-panel h2,.work-panel h2,.grow-panel h2,
+  .water-panel .sub,.time-panel .sub,.work-panel .sub,.grow-panel .sub,
+  .water-panel h3,.time-panel h3,.work-panel h3,.grow-panel h3{font-size:30px;}
+  .water-panel .sub,.time-panel .sub,.work-panel .sub,.grow-panel .sub{line-height:1.6;}
+  .water-panel .stat .num,.time-panel .stat .num,.work-panel .stat .num,
+  .water-panel .stat .lab,.time-panel .stat .lab,.work-panel .stat .lab{font-size:30px;}
+  .water-panel .water-card .t,.water-panel .water-card .amt,.water-panel .water-card .st{font-size:30px;line-height:1.5;}
+  .water-panel .hint,.time-panel .hint,.work-panel .hint{font-size:26px;}
+  .time-panel .pill,.work-panel .pill{font-size:26px;}
+  .time-panel .cal .dow,.time-panel .cal .cell,.work-panel .cal .dow,.work-panel .cal .cell{font-size:26px;}
+  .time-panel .item .txt,.work-panel .item .txt{font-size:30px;line-height:1.5;}
+  .time-panel .item .txt b,.work-panel .item .txt b{font-size:30px;}
+  .time-panel .wk-detail,.work-panel .wk-detail{font-size:30px;color:var(--brown-soft);}
+  .time-panel .tag,.work-panel .tag{font-size:26px;}
+  .time-panel .mini-btn,.work-panel .mini-btn{font-size:26px;}
+  .time-panel .btn,.work-panel .btn,.water-panel .btn,.grow-panel .btn{font-size:30px;}
+  .time-panel .grow,.work-panel .grow,.water-panel .grow{font-size:30px;}
+  .time-panel input,.work-panel input,.time-panel select,.work-panel select,.water-panel input{font-size:30px;}
+  .time-panel table th,.time-panel table td,.work-panel table th,.work-panel table td{font-size:26px;}
+  .time-panel .empty,.work-panel .empty,.grow-panel .empty{font-size:26px;}
+  .grow-panel .tip .day,.grow-panel .tip .ttl,.grow-panel .tip .ex{font-size:30px;line-height:1.6;}
+  .grow-panel .tip .ttl{font-weight:800;}
 
   .water-grid{display:grid;grid-template-columns:1fr;gap:10px;}
   .water-card{background:var(--yellow-cream);border-radius:14px;padding:15px 18px;text-align:left;border:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
@@ -771,7 +794,7 @@ function waterRender(){
   const total=WATER_PLAN.reduce(function(s,x){ return s+x.amt; },0);
   const got=done.reduce(function(s,i){ return s+WATER_PLAN[i].amt; },0);
   p.innerHTML=
-    '<div class="card">'+
+    '<div class="card water-panel">'+
       '<h2>💧 天天喝水</h2>'+
       '<div class="sub">内置标准喝水时间表，标注建议饮水量，勾选完成即可。建议每日总量约 '+total+' ml。</div>'+
       '<div class="stat-grid">'+
@@ -958,7 +981,7 @@ function timeRender(){
   const dim=daysInMonth(y,m);
   const data=sched[sel]||[];
   p.innerHTML=
-    '<div class="card">'+
+    '<div class="card time-panel">'+
       '<h2>📅 时间记录</h2>'+
       '<div class="sub">日历记录上课/日程时间，按日期手动编辑，每月自动汇总。</div>'+
       '<div class="row">'+
@@ -982,7 +1005,7 @@ function timeRender(){
         '<button class="btn" id="sa">添加</button>'+
       '</div>'+
     '</div>'+
-    '<div class="card">'+
+    '<div class="card time-panel">'+
       '<h2>📊 本月汇总</h2>'+
       '<div id="monthSum"></div>'+
     '</div>';
@@ -1015,7 +1038,7 @@ function workRender(){
   const td=today();
   const list=evs.filter(function(e){ return e.date===td; });
   p.innerHTML=
-    '<div class="card">'+
+    '<div class="card work-panel">'+
       '<h2>💼 事件记录（工作）</h2>'+
       '<div class="sub">工作留痕，按日期记录，可结合日历随时回溯。</div>'+
       '<div class="row"><input id="wt" class="grow" placeholder="事件标题，如 完成周报" /></div>'+
@@ -1028,7 +1051,7 @@ function workRender(){
       '<div id="wlist"></div>'+
       '<div class="hint">💡 切换到「时间记录」日历，可查看任意日期的工作留痕。</div>'+
     '</div>'+
-    '<div class="card">'+
+    '<div class="card work-panel">'+
       '<h2>🗓️ 按日期查看</h2>'+
       '<div class="row">'+
         '<input type="date" id="wdate" value="'+td+'" style="width:auto" />'+
@@ -1040,7 +1063,7 @@ function workRender(){
   if(!list.length) wl.innerHTML='<div class="empty">今天还没有工作记录</div>';
   list.sort(function(a,b){ return b.id.localeCompare(a.id); }).forEach(function(e){
     const d=document.createElement('div'); d.className='item';
-    d.innerHTML='<div class="txt"><span class="tag">'+(e.tag||'其他')+'</span> <b>'+esc(e.title)+'</b><br><span style="font-size:24px;color:var(--brown-soft)">'+esc(e.detail||'')+'</span></div>'+
+    d.innerHTML='<div class="txt"><span class="tag">'+(e.tag||'其他')+'</span> <b>'+esc(e.title)+'</b><br><span class="wk-detail">'+esc(e.detail||'')+'</span></div>'+
       '<div class="act"><button class="mini-btn del" data-d="'+e.id+'">删</button></div>';
     wl.appendChild(d);
   });
@@ -1050,7 +1073,7 @@ function workRender(){
     const dv=$('#wdate').value; const arr=evs.filter(function(e){ return e.date===dv; });
     const box=$('#wbydate');
     if(!arr.length){ box.innerHTML='<div class="empty">该日无工作记录</div>'; return; }
-    box.innerHTML=arr.map(function(e){ return '<div class="item"><div class="txt"><span class="tag">'+(e.tag||'其他')+'</span> <b>'+esc(e.title)+'</b><br><span style="font-size:24px;color:var(--brown-soft)">'+esc(e.detail||'')+'</span></div></div>'; }).join('');
+    box.innerHTML=arr.map(function(e){ return '<div class="item"><div class="txt"><span class="tag">'+(e.tag||'其他')+'</span> <b>'+esc(e.title)+'</b><br><span class="wk-detail">'+esc(e.detail||'')+'</span></div></div>'; }).join('');
   };
   navBadge('work', list.length);
 }
@@ -1080,7 +1103,7 @@ function growRender(){
   const recent=[];
   for(let i=0;i<5;i++){ const dd=addDays(d,-i); let hh=0; for(const c of dd) hh=(hh*17+c.charCodeAt(0))>>>0; recent.push({dd:dd,t:GROWTH[hh%GROWTH.length]}); }
   p.innerHTML=
-    '<div class="card">'+
+    '<div class="card grow-panel">'+
       '<h2>🌱 成长资源</h2>'+
       '<div class="sub">每日一个女性成长沟通必备小技巧，附实用示例，今天也要悄悄变厉害 💛</div>'+
       '<div class="tip" style="border:2px solid var(--yellow-soft)">'+
@@ -1094,7 +1117,7 @@ function growRender(){
   const gr=$('#gRecent');
   recent.slice(1).forEach(function(r){
     const d0=document.createElement('div'); d0.className='tip';
-    d0.innerHTML='<div class="day">'+r.dd+'</div><div class="ttl" style="font-size:20px">'+r.t+'</div><div class="ex">'+r.ex+'</div>';
+    d0.innerHTML='<div class="day">'+r.dd+'</div><div class="ttl">'+r.t+'</div><div class="ex">'+r.ex+'</div>';
     gr.appendChild(d0);
   });
   navBadge('grow',0);
