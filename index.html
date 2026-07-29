@@ -478,22 +478,8 @@ function engRender(){
         '<div id="audioBox" style="margin-top:8px"></div>'+
         '<div id="shadowTip" style="margin-top:8px;color:var(--green);font-weight:700;display:none"></div>'+
       '</div>'+
-      '<div style="background:var(--yellow-cream);border-left:4px solid var(--blue);border-radius:14px;padding:16px;margin:10px 0">'+
-        '<div style="font-weight:800;color:var(--blue);margin-bottom:8px">✍️ 背诵默写打卡（自动判分）</div>'+
-        '<div style="color:var(--brown-soft);margin-bottom:8px">先隐藏原文，凭记忆默写出这句英文，提交后自动比对判分。</div>'+
-        '<div class="row" style="flex-wrap:wrap;margin-bottom:8px">'+
-          '<button class="btn" id="toggleEn">👁️ 隐藏/显示原文</button>'+
-          '<button class="btn" id="toggleCn">👁️ 隐藏/显示中文</button>'+
-        '</div>'+
-        '<div id="enbox" style="font-weight:800;color:var(--brown);margin-bottom:8px">'+esc(sp.en)+'</div>'+
-        '<textarea id="dictInput" placeholder="在此默写出英文…" style="width:100%;min-height:70px;font-size:30px;padding:10px;border-radius:12px;border:2px solid var(--line);font-family:inherit;resize:vertical"></textarea>'+
-        '<div class="row" style="margin-top:8px;flex-wrap:wrap">'+
-          '<button class="btn blue" id="check">🔍 提交判分</button>'+
-          '<button class="btn" id="showAns">💡 看答案</button>'+
-          '<button class="btn green" id="recite" style="display:none">✅ 打卡（默写正确）</button>'+
-        '</div>'+
-        '<div id="dictResult" style="margin-top:8px;font-weight:700;display:none"></div>'+
-        '<div id="reciteTip" style="margin-top:8px;color:var(--blue);font-weight:700;display:none"></div>'+
+      '<div class="row" style="margin-top:6px">'+
+        '<button class="btn blue" id="goRecite" style="width:100%;justify-content:center">➡️ 去「背诵默写打卡」页面</button>'+
       '</div>'+
       '<h3>📚 待复习（'+learn.length+'）</h3>'+
       '<div id="erev"></div>'+
@@ -568,6 +554,43 @@ function engRender(){
     if(!tasks.find(function(t){ return t.en===sp.en; })){ tasks.push({id:uid(),en:sp.en,next:r.next}); store.set('eng_tasks',tasks); }
     toast('已安排下次复习：'+r.next+' 💡'); engRender();
   };
+  $('#goRecite').onclick=function(){ engReciteView(); };
+  navBadge('eng', learn.length);
+}
+function engReciteView(){
+  const p=panel('eng');
+  const sp=speechForDate();
+  let rec=store.get('eng_rec',{});
+  const key=sp.en.slice(0,20);
+  if(!rec[key]) rec[key]={stage:0,next:today(),last:today(),shadow:{count:0,last:''},recite:{count:0,last:''}};
+  if(!rec[key].recite) rec[key].recite={count:0,last:''};
+  const r=rec[key];
+  const norm=function(s){ return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim(); };
+  p.innerHTML=
+    '<div class="card eng-panel">'+
+      '<h2>✍️ 背诵默写打卡</h2>'+
+      '<div class="sub">先隐藏原文，凭记忆默写出这句英文，提交后自动比对判分；默写正确即可打卡。</div>'+
+      '<div style="background:var(--yellow-cream);border-left:4px solid var(--blue);border-radius:14px;padding:16px;margin:10px 0">'+
+        '<div style="font-weight:800;color:var(--blue);margin-bottom:8px">📝 今日默写：'+esc(sp.type)+' · '+esc(sp.src)+'</div>'+
+        '<div class="row" style="flex-wrap:wrap;margin-bottom:8px">'+
+          '<button class="btn" id="toggleEn">👁️ 隐藏/显示原文</button>'+
+          '<button class="btn" id="toggleCn">👁️ 隐藏/显示中文</button>'+
+        '</div>'+
+        '<div id="enbox" class="eng-en" style="font-weight:800;color:var(--brown);margin-bottom:8px">'+esc(sp.en)+'</div>'+
+        '<div id="cnbox" style="color:var(--brown-soft);margin-bottom:8px">'+esc(sp.cn)+'</div>'+
+        '<textarea id="dictInput" placeholder="在此默写出英文…" style="width:100%;min-height:90px;font-size:30px;padding:10px;border-radius:12px;border:2px solid var(--line);font-family:inherit;resize:vertical"></textarea>'+
+        '<div class="row" style="margin-top:8px;flex-wrap:wrap">'+
+          '<button class="btn blue" id="check">🔍 提交判分</button>'+
+          '<button class="btn" id="showAns">💡 看答案</button>'+
+          '<button class="btn green" id="recite" style="display:none">✅ 打卡（默写正确）</button>'+
+        '</div>'+
+        '<div id="dictResult" style="margin-top:8px;font-weight:700;display:none"></div>'+
+        '<div id="reciteTip" style="margin-top:8px;color:var(--blue);font-weight:700;display:none"></div>'+
+      '</div>'+
+      '<div class="row" style="margin-top:6px">'+
+        '<button class="btn" id="backEng" style="width:100%;justify-content:center">⬅️ 返回「英语口语·跟读」</button>'+
+      '</div>'+
+    '</div>';
   let enHidden=false, cnHidden=false;
   $('#toggleEn').onclick=function(){
     enHidden=!enHidden;
@@ -610,7 +633,8 @@ function engRender(){
     tip.textContent='📝 已打卡！累计背诵 '+r.recite.count+' 次（'+r.recite.last+'）';
     toast('背诵默写打卡 +1 ✅');
   };
-  navBadge('eng', learn.length);
+  $('#backEng').onclick=function(){ engRender(); };
+  navBadge('eng', 0);
 }
 
 /* ============ ③ 记账存钱 ============ */
