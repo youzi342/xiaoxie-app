@@ -899,24 +899,28 @@ function waterAlert(){
   }
 }
 
-/* ============ ⑥ 每日穿搭 ============ */
+/* ============ ⑥ 每日穿搭（153cm/59kg 梨形·下半身偏胖） ============ */
 const OUTFITS=[
-  {t:'通勤温柔风',emoji:'🧥',src:'小红书',kw:'小个子通勤穿搭',url:'https://www.xiaohongshu.com/search_result?keyword=%E5%B0%8F%E4%B8%AA%E5%AD%90%E9%80%9A%E5%8B%A4%E7%A9%BF%E6%90%AD',
-   desc:'短款西装外套+高腰直筒裤+乐福鞋，拉长比例显高。',tip:'小个子避免过膝长外套，腰线提至肚脐上方最显高。'},
-  {t:'周末休闲风',emoji:'👚',src:'抖音',url:'https://www.douyin.com/search/%E5%B0%8F%E4%B8%AA%E5%AD%90%E4%BC%91%E9%97%B2%E7%A9%BF%E6%90%AD',
-   desc:'正肩T恤+ A字半身裙+小白鞋，清爽减龄。',tip:'A字裙遮胯，正肩比落肩更显精神。'},
-  {t:'约会甜辣风',emoji:'💃',src:'B站',url:'https://search.bilibili.com/all?keyword=%E5%B0%8F%E4%B8%AA%E5%AD%90%E7%A9%BF%E6%90%AD',
-   desc:'针织短上衣+ 高腰阔腿裤+ 项链点缀。',tip:'露脐长度控制在肚脐上2cm，显高不暴露。'},
-  {t:'运动活力风',emoji:'🏃',src:'小红书',kw:'小个子运动穿搭',url:'https://www.xiaohongshu.com/search_result?keyword=%E5%B0%8F%E4%B8%AA%E5%AD%90%E8%BF%90%E5%8A%A8%E7%A9%BF%E6%90%AD',
-   desc:'修身运动bra+ 宽松卫裤+ 老爹鞋。',tip:'上紧下松平衡视觉，老爹鞋隐形增高。'},
-  {t:'法式慵懒风',emoji:'🧶',src:'小红书',kw:'小个子法式穿搭',url:'https://www.xiaohongshu.com/search_result?keyword=%E5%B0%8F%E4%B8%AA%E5%AD%90%E6%B3%95%E5%BC%8F%E7%A9%BF%E6%90%AD',
-   desc:'针织开衫+ 碎花半身裙+ 玛丽珍鞋，温柔有女人味。',tip:'碎花选小碎花不显壮，开衫敞开穿更显瘦。'},
-  {t:'极简高级风',emoji:'🤍',src:'抖音',url:'https://www.douyin.com/search/%E5%B0%8F%E4%B8%AA%E5%AD%90%E6%9E%81%E7%AE%80%E7%A9%BF%E6%90%AD',
-   desc:'白衬衫+ 西装阔腿裤+ 极简托特包，干净利落。',tip:'全身同色系最显高，用金属耳环提亮点缀。'},
-  {t:'学院青春风',emoji:'🎒',src:'B站',url:'https://search.bilibili.com/all?keyword=%E5%B0%8F%E4%B8%AA%E5%AD%90%E5%AD%A6%E9%99%A2%E9%A3%8E',
-   desc:'针织背心+ 白衬衫+ 百褶裙+ 长袜，减龄学院感。',tip:'百褶裙长度在膝上10cm最安全，配长袜显腿直。'},
-  {t:'温柔奶奶风',emoji:'🧣',src:'小红书',kw:'小个子奶奶衫穿搭',url:'https://www.xiaohongshu.com/search_result?keyword=%E5%B0%8F%E4%B8%AA%E5%AD%90%E5%A5%B6%E5%A5%B6%E8%A1%AB%E7%A9%BF%E6%90%AD',
-   desc:'奶奶开衫+ 直筒牛仔裤+ 帆布鞋，松弛治愈。',tip:'上松下直最藏肉，发色柔和更搭奶奶风。'}
+  {t:'通勤遮胯风',emoji:'🧥',src:'小红书',kw:'梨形身材 通勤穿搭 遮胯',url:'https://www.xiaohongshu.com/search_result?keyword=%E6%A2%A8%E5%BD%A2%E8%BA%AB%E6%9D%90%20%E9%80%9A%E5%8B%A4%E7%A9%BF%E6%90%AD%20%E9%81%AE%E8%83%AF',
+   desc:'短款西装外套+ 深色高腰直筒裤+ 尖头乐福鞋，上浅下深显瘦。',tip:'梨形选深色直筒裤遮胯，外套不过臀最藏肉。'},
+  {t:'A字裙休闲',emoji:'👚',src:'抖音',kw:'梨形身材 A字裙 穿搭',url:'https://www.douyin.com/search/%E6%A2%A8%E5%BD%A2%E8%BA%AB%E6%9D%90%20A%E5%AD%97%E8%A3%99%20%E7%A9%BF%E6%90%AD',
+   desc:'正肩亮色T恤+ 黑色A字半身裙+ 小白鞋，上亮下暗。',tip:'A字裙散开遮大腿，正肩比落肩更显精神。'},
+  {t:'阔腿显瘦风',emoji:'💃',src:'抖音',kw:'梨形身材 阔腿裤 穿搭',url:'https://www.douyin.com/search/%E6%A2%A8%E5%BD%A2%E8%BA%AB%E6%9D%90%20%E9%98%94%E8%85%BF%E8%A3%A4%20%E7%A9%BF%E6%90%AD',
+   desc:'短款针织+ 高腰黑色阔腿裤+ 细带凉鞋，裤管盖鞋面。',tip:'阔腿裤盖住鞋面拉长腿，腰头卡在肚脐上2cm。'},
+  {t:'运动藏肉风',emoji:'🏃',src:'小红书',kw:'梨形身材 运动穿搭 遮胯',url:'https://www.xiaohongshu.com/search_result?keyword=%E6%A2%A8%E5%BD%A2%E8%BA%AB%E6%9D%90%20%E8%BF%90%E5%8A%A8%E7%A9%BF%E6%90%AD%20%E9%81%AE%E8%83%AF',
+   desc:'宽松卫衣+ 黑色束脚卫裤+ 老爹鞋，上松下紧。',tip:'束脚裤收在脚踝最显瘦，老爹鞋隐形增高。'},
+  {t:'法式遮胯',emoji:'🧶',src:'小红书',kw:'梨形身材 法式穿搭',url:'https://www.xiaohongshu.com/search_result?keyword=%E6%A2%A8%E5%BD%A2%E8%BA%AB%E6%9D%90%20%E6%B3%95%E5%BC%8F%E7%A9%BF%E6%90%AD',
+   desc:'开衫+ 深色直筒半裙+ 玛丽珍鞋，温柔藏胯。',tip:'开衫敞开穿遮腰腹，直筒裙比包臀裙更友好。'},
+  {t:'极简高腰',emoji:'🤍',src:'抖音',kw:'梨形身材 极简穿搭 高腰',url:'https://www.douyin.com/search/%E6%A2%A8%E5%BD%A2%E8%BA%AB%E6%9D%90%20%E6%9E%81%E7%AE%80%E7%A9%BF%E6%90%AD%20%E9%AB%98%E8%85%B0',
+   desc:'白衬衫+ 黑色西装阔腿裤+ 极简托特包。',tip:'一身深色下装显瘦，用金属耳环提亮点缀。'},
+  {t:'学院遮腿',emoji:'🎒',src:'抖音',kw:'梨形身材 学院风 穿搭',url:'https://www.douyin.com/search/%E6%A2%A8%E5%BD%A2%E8%BA%AB%E6%9D%90%20%E5%AD%A6%E9%99%A2%E9%A3%8E%20%E7%A9%BF%E6%90%AD',
+   desc:'针织背心+ 白衬衫+ 过膝百褶裙+ 长袜。',tip:'过膝裙遮大腿，配长袜显腿直不显胖。'},
+  {t:'奶奶衫藏肉',emoji:'🧣',src:'小红书',kw:'梨形身材 奶奶衫 穿搭',url:'https://www.xiaohongshu.com/search_result?keyword=%E6%A2%A8%E5%BD%A2%E8%BA%AB%E6%9D%90%20%E5%A5%B6%E5%A5%B6%E8%A1%AB%20%E7%A9%BF%E6%90%AD',
+   desc:'奶奶开衫+ 深色直筒牛仔裤+ 帆布鞋。',tip:'上松下直最藏肉，发色柔和更搭奶奶风。'},
+  {t:'吊带叠穿',emoji:'🩱',src:'抖音',kw:'梨形身材 吊带 叠穿',url:'https://www.douyin.com/search/%E6%A2%A8%E5%BD%A2%E8%BA%AB%E6%9D%90%20%E5%90%8A%E5%B8%A6%20%E5%8F%A0%E7%A9%BF',
+   desc:'白吊带+ 薄款长袖防晒衫+ 高腰直筒裤。',tip:'外长内短遮腰胯，露手腕脚踝最显轻盈。'},
+  {t:'连衣裙梨形',emoji:'👗',src:'小红书',kw:'梨形身材 连衣裙 穿搭',url:'https://www.xiaohongshu.com/search_result?keyword=%E6%A2%A8%E5%BD%A2%E8%BA%AB%E6%9D%90%20%E8%BF%9E%E8%A1%A3%E8%A3%99%20%E7%A9%BF%E6%90%AD',
+   desc:'收腰A摆连衣裙+ 细带凉鞋，腰线提到肋骨下。',tip:'选A摆不选包臀，收腰位置在肋骨下最显比例。'}
 ];
 function fitRender(){
   const p=panel('fit');
@@ -924,8 +928,8 @@ function fitRender(){
   p.innerHTML=
     '<div class="card fit-panel">'+
       '<h2>👗 每日穿搭</h2>'+
-      '<div class="sub">你的身材：153cm / 59kg（娇小匀称型）。每日自动更新一套穿搭图片灵感，可跳转原平台看更多；也可输入已有衣物获取搭配建议。</div>'+
-      '<h3>🖼️ 今日穿搭图片（每日更新）</h3>'+
+      '<div class="sub">你的身材：153cm / 59kg（<b>梨形·下半身偏胖</b>）。每日自动更新两套穿搭灵感（来自小红书/抖音大数据），重点遮胯显瘦、拉长比例；也可输入已有衣物获取搭配建议。</div>'+
+      '<h3>🖼️ 今日穿搭图片（每日更新·两套）</h3>'+
       '<div class="grid" id="og"></div>'+
       '<h3>🧺 我的衣橱 + 搭配建议</h3>'+
       '<div class="row">'+
@@ -937,21 +941,24 @@ function fitRender(){
       '<div id="fitSug" style="margin-top:10px"></div>'+
     '</div>';
   const og=$('#og');
-  // 按日期选今日一套穿搭（每日更新）
+  // 按日期选今日两套穿搭（每日更新，互不重复）
   let fh=0; for(const c of td) fh=(fh*31+c.charCodeAt(0))>>>0;
-  const todayOut=OUTFITS[fh%OUTFITS.length];
-  const o=todayOut;
-  const d=document.createElement('div'); d.className='tile big-tile';
-  const copyBtn=o.src==='小红书'?'<button class="mini-btn" data-copy="'+esc(o.kw)+'">📋 复制关键词</button>':'';
-  d.innerHTML='<div class="thumb">'+o.emoji+'</div><div class="body">'+
-    '<span class="src">'+o.src+' 图片 · 每日更新</span>'+
-    '<div class="tt">'+o.t+'</div>'+
-    '<div class="td">'+o.desc+'</div>'+
-    '<div class="td" style="color:var(--yellow-deep)">💡 '+o.tip+'</div>'+
-    '<div class="jump"><a href="'+o.url+'" target="_blank" rel="noopener">🖼️ 看原图 '+o.src+'</a>'+copyBtn+'</div>'+
-    (o.src==='小红书'?'<div class="xhs-tip">小红书网页端可能需打开App才能看图，可复制关键词去App搜索同名穿搭</div>':'')+
-  '</div>';
-  og.appendChild(d);
+  const i1=fh%OUTFITS.length;
+  const i2=(fh+4)%OUTFITS.length;
+  [i1,i2].forEach(function(k){
+    const o=OUTFITS[k];
+    const d=document.createElement('div'); d.className='tile big-tile';
+    const copyBtn=o.src==='小红书'?'<button class="mini-btn" data-copy="'+esc(o.kw)+'">📋 复制关键词</button>':'';
+    d.innerHTML='<div class="thumb">'+o.emoji+'</div><div class="body">'+
+      '<span class="src">'+o.src+' 图文/视频 · 每日更新</span>'+
+      '<div class="tt">'+o.t+'</div>'+
+      '<div class="td">'+o.desc+'</div>'+
+      '<div class="td" style="color:var(--yellow-deep)">💡 '+o.tip+'</div>'+
+      '<div class="jump"><a href="'+o.url+'" target="_blank" rel="noopener">🎬 看原片 '+o.src+'</a>'+copyBtn+'</div>'+
+      (o.src==='小红书'?'<div class="xhs-tip">小红书网页端可能需打开App才能看图，可复制关键词去App搜索同名穿搭</div>':'')+
+    '</div>';
+    og.appendChild(d);
+  });
   og.querySelectorAll('[data-copy]').forEach(function(b){ b.onclick=function(){ copyText(b.dataset.copy); }; });
   const mcl=$('#mcl');
   if(!myClothes.length) mcl.innerHTML='<div class="empty">衣橱空空，添加几件单品试试～</div>';
@@ -968,34 +975,35 @@ function fitRender(){
     const arr=store.get('my_clothes',[]);
     const box=$('#fitSug');
     if(arr.length<2){ box.innerHTML='<div class="hint">多添加几件单品（上装+下装），我能给你更准的建议哦～</div>'; return; }
-    // 身材示意 SVG（无需外链图片，本地直接渲染，避免图片无法显示）
+    // 身材示意 SVG（梨形：上瘦下胖，无需外链图片，本地直接渲染）
     const fig=
-      '<svg class="body-fig" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="小个子身材示意">'+
+      '<svg class="body-fig" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="梨形身材示意">'+
         '<rect x="0" y="0" width="200" height="320" fill="#fff7e6"/>'+
         // 头
-        '<circle cx="100" cy="38" r="20" fill="#ffd9a0"/>'+
-        // 上装（短款，高腰线在上腹）
-        '<path d="M78 60 Q100 50 122 60 L126 112 L74 112 Z" fill="#ff8fa3"/>'+
-        // 高腰下装（腰线在肚脐上方）
-        '<path d="M74 112 L126 112 L120 250 L80 250 Z" fill="#7ec8e3"/>'+
-        // 腿（露出脚踝显高）
-        '<rect x="84" y="250" width="12" height="50" fill="#ffd9a0"/>'+
-        '<rect x="104" y="250" width="12" height="50" fill="#ffd9a0"/>'+
+        '<circle cx="100" cy="34" r="18" fill="#ffd9a0"/>'+
+        // 上装（窄肩细腰，亮色）
+        '<path d="M82 52 Q100 44 118 52 L114 104 L86 104 Z" fill="#ff8fa3"/>'+
+        // 高腰下装（腰细、胯宽、向外散开遮胯，深色）
+        '<path d="M86 104 L114 104 L132 250 L68 250 Z" fill="#3a5a78"/>'+
+        // 脚踝（露脚踝显高）
+        '<rect x="82" y="250" width="11" height="46" fill="#ffd9a0"/>'+
+        '<rect x="107" y="250" width="11" height="46" fill="#ffd9a0"/>'+
         // 鞋
-        '<rect x="80" y="298" width="20" height="10" rx="3" fill="#5b5b5b"/>'+
-        '<rect x="100" y="298" width="20" height="10" rx="3" fill="#5b5b5b"/>'+
+        '<rect x="78" y="294" width="19" height="10" rx="3" fill="#5b5b5b"/>'+
+        '<rect x="103" y="294" width="19" height="10" rx="3" fill="#5b5b5b"/>'+
         // 高腰线标注
-        '<line x1="74" y1="112" x2="126" y2="112" stroke="#e63946" stroke-width="2" stroke-dasharray="4 3"/>'+
-        '<text x="132" y="108" font-size="11" fill="#e63946">高腰线↑</text>'+
-        '<text x="60" y="200" font-size="11" fill="#1d3557" transform="rotate(-90 60 200)">腿占全身6成</text>'+
-        '<text x="70" y="20" font-size="12" fill="#5b5b5b">153cm/59kg</text>'+
+        '<line x1="86" y1="104" x2="114" y2="104" stroke="#e63946" stroke-width="2" stroke-dasharray="4 3"/>'+
+        '<text x="120" y="100" font-size="11" fill="#e63946">高腰线↑</text>'+
+        // 下半身偏胖标注
+        '<text x="60" y="180" font-size="11" fill="#1d3557" transform="rotate(-90 60 180)">下半身偏胖</text>'+
+        '<text x="66" y="18" font-size="12" fill="#5b5b5b">153cm/59kg 梨形</text>'+
       '</svg>';
     box.innerHTML=
       '<div class="fig-wrap">'+fig+'</div>'+
-      '<div class="report"><h4>💡 搭配建议（基于你的衣橱）</h4>'+
+      '<div class="report"><h4>💡 搭配建议（基于你的衣橱·梨形）</h4>'+
       '你现有：'+arr.map(esc).join('、')+'。<br>'+
-      '小个子(153cm)万能公式：<b>上紧下松 / 上短下高</b>。把衣橱里的上装与高腰下装组合，露出脚踝或脚面最显高；'+
-      '颜色遵循"一身不超过3个主色"，优先同色系或黑白+亮色点缀。可尝试：'+arr.slice(0,2).map(esc).join(' + ')+' 作为基础搭配。</div>';
+      '梨形(下半身偏胖)核心：<b>上亮下暗 / 上紧下松 / 高腰遮胯</b>。上衣选亮色或正肩款把视线引到上半身，下装一律用深色、直筒或A字散开遮大腿胯部；'+
+      '腰线卡在肚脐上2cm，露出脚踝或脚面最显高显瘦。可尝试：'+arr.slice(0,2).map(esc).join(' + ')+' 作为基础搭配。</div>';
   };
   navBadge('fit',0);
 }
