@@ -1,5 +1,5 @@
 // 小谢小姐的app —— Service Worker（离线缓存，使 PWA 可安装 + 离线可用）
-const CACHE = 'xx-miss-app-v13';
+const CACHE = 'xx-miss-app-v14';
 const FILES = [
   '.',
   'index.html',
