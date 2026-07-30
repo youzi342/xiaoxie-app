@@ -21,6 +21,7 @@
     --brown:#7A6A3A;
     --brown-soft:#A99A6C;
     --pink:#FFB3C1;
+    --pink-deep:#E75480;
     --green:#9ED79A;
     --red:#FF8A8A;
     --blue:#8FCAE7;
@@ -168,6 +169,15 @@
   .econ-tag{background:var(--blue);color:#fff;}
   .nt{font-size:30px;font-weight:800;color:var(--brown);line-height:1.4;}
   .td.full{font-size:28px;line-height:1.8;color:var(--brown-soft);white-space:normal;}
+  /* 好好吃饭：详细菜谱卡片 */
+  .food-tile .body{padding:16px 18px;gap:8px;}
+  .food-tile .thumb{height:120px;background:linear-gradient(135deg,#fff3d6,#ffe0ec);}
+  .rc-title{font-size:28px;font-weight:800;color:var(--pink-deep);margin-top:6px;}
+  .ings{margin:2px 0 0 0;padding-left:26px;}
+  .ings li{font-size:27px;line-height:1.7;color:var(--brown);}
+  .steps{margin:2px 0 0 0;padding-left:8px;list-style:none;counter-reset:s;}
+  .steps li{font-size:27px;line-height:1.8;color:var(--brown-soft);display:flex;gap:8px;align-items:flex-start;margin-bottom:4px;}
+  .step-n{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--pink);color:#fff;font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px;}
   .tile .tt{font-weight:800;font-size:16.5px;color:var(--brown);line-height:1.35;}
   .tile .td{font-size:14px;color:var(--brown-soft);line-height:1.5;flex:1;}
   .tile .jump{margin-top:auto;}
@@ -1085,24 +1095,44 @@ function newsRender(){
   navBadge('news',0);
 }
 
-/* ============ ⑧ 好好吃饭 ============ */
+/* ============ ⑧ 好好吃饭（每日减脂家常菜·午晚各一道·详细菜谱） ============ */
 const FOODS=[
-  {meal:'午餐',t:'西兰花鸡胸藜麦碗',emoji:'🥦',kcal:420,src:'小红书',kw:'西兰花鸡胸藜麦碗',url:'https://www.xiaohongshu.com/search_result?keyword=%E7%81%AB%E9%B8%A1%E8%83%B8%E9%BB%8E%E9%BA%A6%E7%A2%97',
-   desc:'水煮鸡胸撕条+焯西兰花+熟藜麦，淋柠檬黑胡椒，高蛋白低脂。'},
-  {meal:'午餐',t:'番茄豆腐魔芋面',emoji:'🍅',kcal:350,src:'抖音',url:'https://www.douyin.com/search/%E7%95%AA%E8%8C%84%E8%B1%86%E8%85%90%E9%AD%94%E8%8A%9A%E9%9D%A2',
-   desc:'番茄熬汤底+嫩豆腐+魔芋面，零负担饱腹，适合控碳水日。'},
-  {meal:'午餐',t:'鲜虾牛油果沙拉',emoji:'🥗',kcal:380,src:'小红书',kw:'鲜虾牛油果沙拉',url:'https://www.xiaohongshu.com/search_result?keyword=%E9%B2%9C%E8%99%BE%E7%89%9B%E6%B2%B9%E6%9E%9C%E6%B2%99%E6%8B%89',
-   desc:'白灼虾+牛油果+生菜+玉米粒，油醋汁拌，优质脂肪饱腹。'},
-  {meal:'午餐',t:'荞麦冷面鸡腿',emoji:'🍜',kcal:450,src:'抖音',url:'https://www.douyin.com/search/%E2%BC%A9%E9%BA%A6%E5%86%B7%E9%9D%A2',
-   desc:'荞麦面+去皮鸡腿+黄瓜丝，冰镇酸汤，夏天开胃不腻。'},
-  {meal:'晚餐',t:'清蒸鲈鱼时蔬',emoji:'🐟',kcal:380,src:'小红书',kw:'清蒸鲈鱼时蔬',url:'https://www.xiaohongshu.com/search_result?keyword=%E6%B8%85%E8%92%B8%E9%B2%88%E9%B1%BC',
-   desc:'鲈鱼清蒸8分钟+摆盘时蔬，优质蛋白+纤维，晚餐不囤脂。'},
-  {meal:'晚餐',t:'凉拌鸡丝紫薯',emoji:'🍠',kcal:330,src:'抖音',url:'https://www.douyin.com/search/%E7%82%88%E6%8B%8C%E9%B8%A1%E4%B8%9D%E7%B4%AB%E8%96%8B',
-   desc:'手撕鸡丝+蒸紫薯+凉拌黄瓜，碳水蛋白均衡，饱腹到睡前。'},
-  {meal:'晚餐',t:'菌菇豆腐汤+杂粮饭',emoji:'🍲',kcal:360,src:'小红书',kw:'菌菇豆腐汤杂粮饭',url:'https://www.xiaohongshu.com/search_result?keyword=%E8%8F%8C%E8%8F%87%E8%B1%86%E8%85%90%E6%B1%A4',
-   desc:'多种菌菇+嫩豆腐熬汤+一小碗杂粮饭，暖胃低卡。'},
-  {meal:'晚餐',t:'虾仁蒸蛋+芦笋',emoji:'🍤',kcal:340,src:'抖音',url:'https://www.douyin.com/search/%E8%99%BE%E4%BB%81%E8%92%B8%E8%9B%8B',
-   desc:'虾仁蒸蛋羹+白灼芦笋，软嫩好消化，睡前无负担。'}
+  {meal:'午餐',t:'西兰花鸡胸藜麦碗',emoji:'🥦',kcal:420,
+   ings:['鸡胸肉 150g','西兰花 200g','熟藜麦 80g','柠檬 半个','黑胡椒/海盐 适量'],
+   steps:['鸡胸肉冷水下锅煮10分钟，捞出撕成条，撒黑胡椒海盐。','西兰花掰小朵，沸水加盐焯1分钟过凉。','藜麦提前煮熟沥干。','碗中铺藜麦，摆鸡丝与西兰花，淋柠檬汁拌匀即可。']},
+  {meal:'午餐',t:'番茄豆腐魔芋面',emoji:'🍅',kcal:350,
+   ings:['番茄 2个','嫩豆腐 150g','魔芋面 1包','鸡蛋 1个','葱花/生抽 适量'],
+   steps:['番茄去皮切丁，热锅少油炒出红汤。','加一碗水煮沸，放入魔芋面与切块的嫩豆腐。','淋入打散的蛋液成蛋花，加盐生抽调味。','撒葱花出锅，控碳水日也能吃饱。']},
+  {meal:'午餐',t:'鲜虾牛油果沙拉',emoji:'🥗',kcal:380,
+   ings:['白虾 8只','牛油果 半个','生菜 100g','玉米粒 50g','油醋汁 1勺'],
+   steps:['白虾去壳开背，沸水焯1分钟变红捞出。','牛油果切片，生菜撕块，玉米粒焯熟。','所有食材入碗，淋油醋汁轻拌。','优质脂肪+蛋白，饱腹又不胖。']},
+  {meal:'午餐',t:'荞麦冷面鸡腿',emoji:'🍜',kcal:450,
+   ings:['荞麦面 60g','去皮鸡腿 1个','黄瓜 半根','蒜末/醋/生抽 适量','冰水 1碗'],
+   steps:['鸡腿去骨煮熟放凉，撕成丝。','荞麦面煮熟过冰水更筋道。','黄瓜切丝铺底，放面条与鸡丝。','调醋+生抽+蒜末成酸汤浇上，夏天开胃。']},
+  {meal:'午餐',t:'清炒时蔬鸡丁',emoji:'🥘',kcal:400,
+   ings:['鸡腿肉 120g','彩椒 1个','西葫芦 150g','橄榄油 1勺','黑胡椒 适量'],
+   steps:['鸡肉切丁，用黑胡椒少许腌5分钟。','彩椒西葫芦切小块。','少油热锅先炒鸡丁变色，下蔬菜大火快炒2分钟。','加盐调味，保留脆嫩口感。']},
+  {meal:'午餐',t:'燕麦虾仁蔬菜粥',emoji:'🥣',kcal:370,
+   ings:['燕麦片 50g','虾仁 10只','胡萝卜 半个','青菜 1把','白胡椒粉 少许'],
+   steps:['燕麦加两碗水小火煮5分钟成糊。','胡萝卜切碎与虾仁一同下锅煮2分钟。','放入切碎青菜再煮1分钟。','撒白胡椒粉，暖胃又低卡。']},
+  {meal:'晚餐',t:'清蒸鲈鱼时蔬',emoji:'🐟',kcal:380,
+   ings:['鲈鱼 1条（约300g）','姜丝 适量','葱段 适量','蒸鱼豉油 1勺','西兰花 100g'],
+   steps:['鲈鱼洗净两面划刀，铺姜丝葱段。','水开后上锅蒸8分钟，倒掉蒸鱼水。','淋蒸鱼豉油，铺焯熟的西兰花。','优质蛋白+纤维，晚餐不囤脂。']},
+  {meal:'晚餐',t:'凉拌鸡丝紫薯',emoji:'🍠',kcal:330,
+   ings:['鸡胸肉 120g','紫薯 1个','黄瓜 1根','蒜泥/醋/生抽 适量'],
+   steps:['鸡胸肉煮熟撕成细丝。','紫薯蒸熟压泥或切块。','黄瓜切丝铺底。','蒜泥+醋+生抽调汁淋上拌匀即可。']},
+  {meal:'晚餐',t:'菌菇豆腐汤+杂粮饭',emoji:'🍲',kcal:360,
+   ings:['鲜菌菇 150g','嫩豆腐 150g','鸡蛋 1个','杂粮米 50g','枸杞 少许'],
+   steps:['杂粮米提前煮成一小碗饭。','菌菇撕小朵，豆腐切块，加水煮5分钟。','淋蛋液成蛋花，加盐，撒枸杞。','暖胃低卡，配杂粮饭刚好。']},
+  {meal:'晚餐',t:'虾仁蒸蛋+芦笋',emoji:'🍤',kcal:340,
+   ings:['鸡蛋 2个','虾仁 8只','芦笋 100g','温水 150ml','生抽 几滴'],
+   steps:['鸡蛋打散加温水(1:1.5)过滤，盖膜蒸8分钟。','虾仁焯水，芦笋切段焯熟。','蛋羹定型后摆上虾仁芦笋再蒸2分钟。','出锅滴几滴生抽，软嫩好消化。']},
+  {meal:'晚餐',t:'凉拌木耳黄瓜',emoji:'🥒',kcal:280,
+   ings:['干木耳 10g','黄瓜 1根','蒜末/醋/生抽 适量','香油 几滴'],
+   steps:['木耳泡发焯水3分钟过凉。','黄瓜拍碎切段。','蒜末+醋+生抽+香油调汁。','拌匀冷藏10分钟更爽口。']},
+  {meal:'晚餐',t:'番茄龙利鱼片',emoji:'🐠',kcal:350,
+   ings:['龙利鱼 200g','番茄 2个','金针菇 100g','姜片 适量','番茄酱 1勺'],
+   steps:['鱼片用少许盐腌一下。','番茄炒出汁加番茄酱与水煮开。','下金针菇煮2分钟，放鱼片烫熟。','汤鲜鱼嫩，低脂高蛋白。']}
 ];
 function foodRender(){
   const p=panel('food');
@@ -1116,7 +1146,7 @@ function foodRender(){
   p.innerHTML=
     '<div class="card food-panel">'+
       '<h2>🍱 好好吃饭</h2>'+
-      '<div class="sub">结合小红书·抖音博主推荐的一人食减脂午晚餐，每日自动更新一道午餐+一道晚餐，附估算热量与图片，点击跳转原平台看做法。</div>'+
+      '<div class="sub">每日减脂家常菜：自动更新一道午餐 + 一道晚餐，附完整食材用量与步骤，照着做就能吃。</div>'+
       '<div class="seg" id="fseg">'+
         '<button class="on" data-f="all">今日全部</button>'+
         '<button data-f="午餐">今日午餐</button>'+
@@ -1128,14 +1158,16 @@ function foodRender(){
   function draw(){
     fg.innerHTML='';
     todayFoods.filter(function(f){ return flt==='all'||f.meal===flt; }).forEach(function(f){
-      const d=document.createElement('div'); d.className='tile';
-      const copyBtn=f.src==='小红书'?'<button class="mini-btn" data-copy="'+esc(f.kw)+'">📋 复制关键词</button>':'';
+      const ings=f.ings.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('');
+      const steps=f.steps.map(function(x,i){ return '<li><span class="step-n">'+(i+1)+'</span>'+esc(x)+'</li>'; }).join('');
+      const d=document.createElement('div'); d.className='tile food-tile';
       d.innerHTML='<div class="thumb">'+f.emoji+'</div><div class="body">'+
-        '<span class="src">'+f.meal+' · '+f.kcal+'kcal · 每日更新</span>'+
+        '<span class="src">'+f.meal+' · 约'+f.kcal+'kcal · 每日更新</span>'+
         '<div class="tt">'+f.t+'</div>'+
-        '<div class="td">'+f.desc+'</div>'+
-        '<div class="jump"><a href="'+f.url+'" target="_blank" rel="noopener">🖼️ '+f.src+'看图片</a>'+copyBtn+'</div>'+
-        (f.src==='小红书'?'<div class="xhs-tip">小红书网页端可能需打开App才能看图，可复制关键词去App搜索同名做法</div>':'')+
+        '<div class="rc-title">🧺 食材与用量</div>'+
+        '<ul class="ings">'+ings+'</ul>'+
+        '<div class="rc-title">👩‍🍳 做法步骤</div>'+
+        '<ol class="steps">'+steps+'</ol>'+
       '</div>';
       fg.appendChild(d);
     });
