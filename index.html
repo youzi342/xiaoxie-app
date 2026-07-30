@@ -232,6 +232,7 @@
   .time-panel .empty,.work-panel .empty,.grow-panel .empty{font-size:26px;}
   .grow-panel .tip .day,.grow-panel .tip .ttl,.grow-panel .tip .ex{font-size:30px;line-height:1.6;}
   .grow-panel .tip .ttl{font-weight:800;}
+  .xhs-tip{font-size:14px;color:var(--brown-soft);background:#fff;border-radius:8px;padding:6px 9px;margin-top:6px;line-height:1.4;border:1px dashed var(--line);}
   /* 每日计划：日历与按日查看字号（与计划模块通用体系一致） */
   .plan-panel .cal .dow,.plan-panel .cal .cell{font-size:20px;}
   .plan-panel .cal .cell{aspect-ratio:1;border-radius:10px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;background:#fff;border:1px solid var(--line);cursor:pointer;font-weight:700;color:var(--brown);}
@@ -334,6 +335,14 @@ function daysInMonth(y,m){ return new Date(y,m+1,0).getDate(); }
 function weekday(y,m,d){ return '日一二三四五六'[new Date(y,m,d).getDay()]; }
 function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
 function esc(s){ return String(s).replace(/[&<>"']/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function copyText(txt){
+  try{
+    if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(txt); toast('已复制：'+txt+'（去小红书App粘贴搜索即可看视频）'); return; }
+  }catch(e){}
+  const ta=document.createElement('textarea'); ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); toast('已复制：'+txt+'（去小红书App粘贴搜索即可看视频）'); }catch(e){ toast('复制失败，请手动搜索：'+txt); }
+  document.body.removeChild(ta);
+}
 function addDays(d,n){ const x=new Date(d); x.setDate(x.getDate()+n); return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0'); }
 
 /* ===== 每日语录 ===== */
@@ -888,13 +897,13 @@ function waterAlert(){
 
 /* ============ ⑥ 每日穿搭 ============ */
 const OUTFITS=[
-  {t:'通勤温柔风',emoji:'🧥',src:'小红书',url:'https://www.xiaohongshu.com/search_result?keyword=%E5%B0%8F%E4%B8%AA%E5%AD%90%E9%80%9A%E5%8B%A4%E7%A9%BF%E6%90%AD',
+  {t:'通勤温柔风',emoji:'🧥',src:'小红书',kw:'小个子通勤穿搭',url:'https://www.xiaohongshu.com/search_result?keyword=%E5%B0%8F%E4%B8%AA%E5%AD%90%E9%80%9A%E5%8B%A4%E7%A9%BF%E6%90%AD',
    desc:'短款西装外套+高腰直筒裤+乐福鞋，拉长比例显高。',tip:'小个子避免过膝长外套，腰线提至肚脐上方最显高。'},
   {t:'周末休闲风',emoji:'👚',src:'抖音',url:'https://www.douyin.com/search/%E5%B0%8F%E4%B8%AA%E5%AD%90%E4%BC%91%E9%97%B2%E7%A9%BF%E6%90%AD',
    desc:'正肩T恤+ A字半身裙+小白鞋，清爽减龄。',tip:'A字裙遮胯，正肩比落肩更显精神。'},
   {t:'约会甜辣风',emoji:'💃',src:'B站',url:'https://search.bilibili.com/all?keyword=%E5%B0%8F%E4%B8%AA%E5%AD%90%E7%A9%BF%E6%90%AD',
    desc:'针织短上衣+ 高腰阔腿裤+ 项链点缀。',tip:'露脐长度控制在肚脐上2cm，显高不暴露。'},
-  {t:'运动活力风',emoji:'🏃',src:'小红书',url:'https://www.xiaohongshu.com/search_result?keyword=%E5%B0%8F%E4%B8%AA%E5%AD%90%E8%BF%90%E5%8A%A8%E7%A9%BF%E6%90%AD',
+  {t:'运动活力风',emoji:'🏃',src:'小红书',kw:'小个子运动穿搭',url:'https://www.xiaohongshu.com/search_result?keyword=%E5%B0%8F%E4%B8%AA%E5%AD%90%E8%BF%90%E5%8A%A8%E7%A9%BF%E6%90%AD',
    desc:'修身运动bra+ 宽松卫裤+ 老爹鞋。',tip:'上紧下松平衡视觉，老爹鞋隐形增高。'}
 ];
 function fitRender(){
@@ -918,14 +927,17 @@ function fitRender(){
   const og=$('#og');
   OUTFITS.forEach(function(o){
     const d=document.createElement('div'); d.className='tile';
+    const copyBtn=o.src==='小红书'?'<button class="mini-btn" data-copy="'+esc(o.kw)+'">📋 复制关键词</button>':'';
     d.innerHTML='<div class="thumb">'+o.emoji+'</div><div class="body">'+
       '<span class="src">'+o.src+' 视频</span>'+
       '<div class="tt">'+o.t+'</div>'+
       '<div class="td">'+o.desc+' '+o.tip+'</div>'+
-      '<div class="jump"><a href="'+o.url+'" target="_blank" rel="noopener">▶ 看视频 '+o.src+'</a></div>'+
+      '<div class="jump"><a href="'+o.url+'" target="_blank" rel="noopener">▶ 看视频 '+o.src+'</a>'+copyBtn+'</div>'+
+      (o.src==='小红书'?'<div class="xhs-tip">小红书网页端可能需打开App才能看视频，可复制关键词去App搜索同名内容</div>':'')+
     '</div>';
     og.appendChild(d);
   });
+  og.querySelectorAll('[data-copy]').forEach(function(b){ b.onclick=function(){ copyText(b.dataset.copy); }; });
   const mcl=$('#mcl');
   if(!myClothes.length) mcl.innerHTML='<div class="empty">衣橱空空，添加几件单品试试～</div>';
   myClothes.forEach(function(c,i){
@@ -984,11 +996,11 @@ function newsRender(){
 
 /* ============ ⑧ 好好吃饭 ============ */
 const FOODS=[
-  {meal:'午餐',t:'西兰花鸡胸藜麦碗',emoji:'🥦',kcal:420,src:'小红书',url:'https://www.xiaohongshu.com/search_result?keyword=%E7%81%AB%E9%B8%A1%E8%83%B8%E9%BB%8E%E9%BA%A6%E7%A2%97',
+  {meal:'午餐',t:'西兰花鸡胸藜麦碗',emoji:'🥦',kcal:420,src:'小红书',kw:'西兰花鸡胸藜麦碗',url:'https://www.xiaohongshu.com/search_result?keyword=%E7%81%AB%E9%B8%A1%E8%83%B8%E9%BB%8E%E9%BA%A6%E7%A2%97',
    desc:'水煮鸡胸撕条+焯西兰花+熟藜麦，淋柠檬黑胡椒，高蛋白低脂。'},
   {meal:'午餐',t:'番茄豆腐魔芋面',emoji:'🍅',kcal:350,src:'抖音',url:'https://www.douyin.com/search/%E7%95%AA%E8%8C%84%E8%B1%86%E8%85%90%E9%AD%94%E8%8A%9A%E9%9D%A2',
    desc:'番茄熬汤底+嫩豆腐+魔芋面，零负担饱腹，适合控碳水日。'},
-  {meal:'晚餐',t:'清蒸鲈鱼时蔬',emoji:'🐟',kcal:380,src:'小红书',url:'https://www.xiaohongshu.com/search_result?keyword=%E6%B8%85%E8%92%B8%E9%B2%88%E9%B1%BC',
+  {meal:'晚餐',t:'清蒸鲈鱼时蔬',emoji:'🐟',kcal:380,src:'小红书',kw:'清蒸鲈鱼时蔬',url:'https://www.xiaohongshu.com/search_result?keyword=%E6%B8%85%E8%92%B8%E9%B2%88%E9%B1%BC',
    desc:'鲈鱼清蒸8分钟+摆盘时蔬，优质蛋白+纤维，晚餐不囤脂。'},
   {meal:'晚餐',t:'凉拌鸡丝紫薯',emoji:'🍠',kcal:330,src:'抖音',url:'https://www.douyin.com/search/%E7%82%88%E6%8B%8C%E9%B8%A1%E4%B8%9D%E7%B4%AB%E8%96%8B',
    desc:'手撕鸡丝+蒸紫薯+凉拌黄瓜，碳水蛋白均衡，饱腹到睡前。'}
@@ -1011,11 +1023,13 @@ function foodRender(){
     fg.innerHTML='';
     FOODS.filter(function(f){ return flt==='all'||f.meal===flt; }).forEach(function(f){
       const d=document.createElement('div'); d.className='tile';
+      const copyBtn=f.src==='小红书'?'<button class="mini-btn" data-copy="'+esc(f.kw)+'">📋 复制关键词</button>':'';
       d.innerHTML='<div class="thumb">'+f.emoji+'</div><div class="body">'+
         '<span class="src">'+f.meal+' · '+f.kcal+'kcal</span>'+
         '<div class="tt">'+f.t+'</div>'+
         '<div class="td">'+f.desc+'</div>'+
-        '<div class="jump"><a href="'+f.url+'" target="_blank" rel="noopener">▶ '+f.src+'看做法</a></div>'+
+        '<div class="jump"><a href="'+f.url+'" target="_blank" rel="noopener">▶ '+f.src+'看做法</a>'+copyBtn+'</div>'+
+        (f.src==='小红书'?'<div class="xhs-tip">小红书网页端可能需打开App才能看视频，可复制关键词去App搜索同名做法</div>':'')+
       '</div>';
       fg.appendChild(d);
     });
