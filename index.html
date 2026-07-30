@@ -234,6 +234,9 @@
   .grow-panel .tip .ttl{font-weight:800;}
   .xhs-tip{font-size:14px;color:var(--brown-soft);background:#fff;border-radius:8px;padding:6px 9px;margin-top:6px;line-height:1.4;border:1px dashed var(--line);}
   .big-tile .thumb{height:180px;font-size:72px;}
+  /* 每日穿搭：身材示意 SVG（本地渲染，避免外链图片无法显示） */
+  .fig-wrap{display:flex;justify-content:center;margin:10px 0;}
+  .body-fig{width:180px;height:288px;border-radius:14px;border:1px solid var(--line);background:#fff7e6;max-width:100%;}
   /* 每日计划：日历与按日查看字号（与计划模块通用体系一致） */
   .plan-panel .cal .dow,.plan-panel .cal .cell{font-size:20px;}
   .plan-panel .cal .cell{aspect-ratio:1;border-radius:10px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;background:#fff;border:1px solid var(--line);cursor:pointer;font-weight:700;color:var(--brown);}
@@ -965,10 +968,34 @@ function fitRender(){
     const arr=store.get('my_clothes',[]);
     const box=$('#fitSug');
     if(arr.length<2){ box.innerHTML='<div class="hint">多添加几件单品（上装+下装），我能给你更准的建议哦～</div>'; return; }
-    box.innerHTML='<div class="report"><h4>💡 搭配建议（基于你的衣橱）</h4>'+
+    // 身材示意 SVG（无需外链图片，本地直接渲染，避免图片无法显示）
+    const fig=
+      '<svg class="body-fig" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="小个子身材示意">'+
+        '<rect x="0" y="0" width="200" height="320" fill="#fff7e6"/>'+
+        // 头
+        '<circle cx="100" cy="38" r="20" fill="#ffd9a0"/>'+
+        // 上装（短款，高腰线在上腹）
+        '<path d="M78 60 Q100 50 122 60 L126 112 L74 112 Z" fill="#ff8fa3"/>'+
+        // 高腰下装（腰线在肚脐上方）
+        '<path d="M74 112 L126 112 L120 250 L80 250 Z" fill="#7ec8e3"/>'+
+        // 腿（露出脚踝显高）
+        '<rect x="84" y="250" width="12" height="50" fill="#ffd9a0"/>'+
+        '<rect x="104" y="250" width="12" height="50" fill="#ffd9a0"/>'+
+        // 鞋
+        '<rect x="80" y="298" width="20" height="10" rx="3" fill="#5b5b5b"/>'+
+        '<rect x="100" y="298" width="20" height="10" rx="3" fill="#5b5b5b"/>'+
+        // 高腰线标注
+        '<line x1="74" y1="112" x2="126" y2="112" stroke="#e63946" stroke-width="2" stroke-dasharray="4 3"/>'+
+        '<text x="132" y="108" font-size="11" fill="#e63946">高腰线↑</text>'+
+        '<text x="60" y="200" font-size="11" fill="#1d3557" transform="rotate(-90 60 200)">腿占全身6成</text>'+
+        '<text x="70" y="20" font-size="12" fill="#5b5b5b">153cm/59kg</text>'+
+      '</svg>';
+    box.innerHTML=
+      '<div class="fig-wrap">'+fig+'</div>'+
+      '<div class="report"><h4>💡 搭配建议（基于你的衣橱）</h4>'+
       '你现有：'+arr.map(esc).join('、')+'。<br>'+
       '小个子(153cm)万能公式：<b>上紧下松 / 上短下高</b>。把衣橱里的上装与高腰下装组合，露出脚踝或脚面最显高；'+
-      '颜色遵循“一身不超过3个主色”，优先同色系或黑白+亮色点缀。可尝试：'+arr.slice(0,2).map(esc).join(' + ')+' 作为基础搭配。</div>';
+      '颜色遵循"一身不超过3个主色"，优先同色系或黑白+亮色点缀。可尝试：'+arr.slice(0,2).map(esc).join(' + ')+' 作为基础搭配。</div>';
   };
   navBadge('fit',0);
 }
