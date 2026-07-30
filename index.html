@@ -233,7 +233,8 @@
   .grow-panel .tip .day,.grow-panel .tip .ttl,.grow-panel .tip .ex{font-size:30px;line-height:1.6;}
   .grow-panel .tip .ttl{font-weight:800;}
   .xhs-tip{font-size:14px;color:var(--brown-soft);background:#fff;border-radius:8px;padding:6px 9px;margin-top:6px;line-height:1.4;border:1px dashed var(--line);}
-  .big-tile .thumb{height:180px;font-size:72px;}
+  .big-tile .thumb{height:200px;display:flex;align-items:center;justify-content:center;background:#fff7e6;border-radius:14px 14px 0 0;}
+  .outfit-svg{width:100%;height:200px;display:block;}
   /* 每日穿搭：身材示意 SVG（本地渲染，避免外链图片无法显示） */
   .fig-wrap{display:flex;justify-content:center;margin:10px 0;}
   .body-fig{width:180px;height:288px;border-radius:14px;border:1px solid var(--line);background:#fff7e6;max-width:100%;}
@@ -922,6 +923,32 @@ const OUTFITS=[
   {t:'连衣裙梨形',emoji:'👗',src:'小红书',kw:'梨形身材 连衣裙 穿搭',url:'https://www.xiaohongshu.com/search_result?keyword=%E6%A2%A8%E5%BD%A2%E8%BA%AB%E6%9D%90%20%E8%BF%9E%E8%A1%A3%E8%A3%99%20%E7%A9%BF%E6%90%AD',
    desc:'收腰A摆连衣裙+ 细带凉鞋，腰线提到肋骨下。',tip:'选A摆不选包臀，收腰位置在肋骨下最显比例。'}
 ];
+// 内联 SVG 穿搭示意（本地渲染，不依赖 emoji 字体/外链图片，保证一定显示）
+const OUTFIT_COLORS=[
+  ['#ff8fa3','#3a5a78'],['#ffd166','#222831'],['#ff7aa2','#1b3a4b'],['#a0c4ff','#263238'],
+  ['#ffafcc','#37474f'],['#ffffff','#263238'],['#bdb2ff','#2b2d42'],['#ffd9a0','#37474f'],
+  ['#fff','#4a4e69'],['#ffc8dd','#3d405b']
+];
+function outfitFig(o,idx){
+  const col=OUTFIT_COLORS[idx%OUTFIT_COLORS.length];
+  const top=col[0], bot=col[1];
+  return '<svg class="outfit-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="'+o.t+'">'+
+    '<rect width="200" height="200" fill="#fff7e6"/>'+
+    // 头
+    '<circle cx="100" cy="40" r="18" fill="#ffd9a0"/>'+
+    // 上装（亮色/主题色）
+    '<path d="M80 60 Q100 52 120 60 L116 110 L84 110 Z" fill="'+top+'" stroke="#e0a800" stroke-width="1"/>'+
+    // 下装（深色遮胯，外扩）
+    '<path d="M84 110 L116 110 L132 180 L68 180 Z" fill="'+bot+'"/>'+
+    // 鞋
+    '<rect x="78" y="182" width="16" height="9" rx="3" fill="#5b5b5b"/>'+
+    '<rect x="106" y="182" width="16" height="9" rx="3" fill="#5b5b5b"/>'+
+    // 风格 emoji 徽标
+    '<text x="158" y="40" font-size="26">'+o.emoji+'</text>'+
+    // 来源角标
+    '<text x="10" y="192" font-size="12" fill="#8a6d3b">'+o.src+' · 每日更新</text>'+
+  '</svg>';
+}
 function fitRender(){
   const p=panel('fit');
   const myClothes=store.get('my_clothes',[]);
@@ -949,7 +976,7 @@ function fitRender(){
     const o=OUTFITS[k];
     const d=document.createElement('div'); d.className='tile big-tile';
     const copyBtn=o.src==='小红书'?'<button class="mini-btn" data-copy="'+esc(o.kw)+'">📋 复制关键词</button>':'';
-    d.innerHTML='<div class="thumb">'+o.emoji+'</div><div class="body">'+
+    d.innerHTML='<div class="thumb">'+outfitFig(o,k)+'</div><div class="body">'+
       '<span class="src">'+o.src+' 图文/视频 · 每日更新</span>'+
       '<div class="tt">'+o.t+'</div>'+
       '<div class="td">'+o.desc+'</div>'+
