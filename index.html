@@ -159,6 +159,15 @@
   .tile{background:var(--yellow-cream);border-radius:14px;overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;}
   .tile .thumb{height:120px;background:linear-gradient(135deg,var(--yellow-soft),var(--pink));display:flex;align-items:center;justify-content:center;font-size:40px;}
   .tile .body{padding:14px;flex:1;display:flex;flex-direction:column;gap:7px;}
+  /* 每日新闻：3条完整新闻卡片（无跳转） */
+  .news-tile{background:#fff;border:1px solid var(--line);}
+  .news-tile .body{padding:16px 18px;gap:10px;}
+  .nh{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .news-tag,.econ-tag{display:inline-block;border-radius:12px;padding:4px 12px;font-size:26px;font-weight:800;}
+  .news-tag{background:var(--pink);color:#fff;}
+  .econ-tag{background:var(--blue);color:#fff;}
+  .nt{font-size:30px;font-weight:800;color:var(--brown);line-height:1.4;}
+  .td.full{font-size:28px;line-height:1.8;color:var(--brown-soft);white-space:normal;}
   .tile .tt{font-weight:800;font-size:16.5px;color:var(--brown);line-height:1.35;}
   .tile .td{font-size:14px;color:var(--brown-soft);line-height:1.5;flex:1;}
   .tile .jump{margin-top:auto;}
@@ -1035,33 +1044,41 @@ function fitRender(){
   navBadge('fit',0);
 }
 
-/* ============ ⑦ 每日新闻 ============ */
+/* ============ ⑦ 每日新闻（每日更新3条·内容完整·无需跳转） ============ */
 const NEWS=[
-  {c:'爆点',t:'夏季文旅消费持续升温',d:'多地推出夜间经济与避暑线路，带动餐饮、民宿订单环比增长明显，本地生活服务迎来旺季。',src:'综合',url:'https://www.baidu.com/s?wd=%E5%A4%8F%E5%AD%A3%E6%96%87%E6%97%85%E6%B6%88%E8%B4%B9'},
-  {c:'爆点',t:'AI助手走进日常办公',d:'多家厂商更新端侧大模型，离线也能写文档、做摘要，隐私与效率兼顾，职场人使用门槛持续降低。',src:'科技',url:'https://www.baidu.com/s?wd=AI%E5%8A%A9%E6%89%8B%E5%8A%9E%E5%85%AC'},
-  {c:'财经',t:'央行维持流动性合理充裕',d:'公开市场操作节奏平稳，市场利率低位运行，企业融资成本稳中有降，利好实体经济修复。',src:'财经',url:'https://www.baidu.com/s?wd=%E5%A4%AE%E8%A1%8C%E6%B5%81%E5%8A%A8%E6%80%A7'},
-  {c:'财经',t:'新能源板块估值回归',d:'随着装机量与出口数据改善，产业链盈利预期上调，机构建议关注具备成本优势的龙头企业。',src:'财经',url:'https://www.baidu.com/s?wd=%E6%96%B0%E8%83%BD%E6%BA%90%E8%82%A1'},
-  {c:'爆点',t:'城市骑行成新生活方式',d:'共享单车与公路车销量走高，通勤+周末郊游结合，带动运动装备与咖啡街区消费。',src:'生活',url:'https://www.baidu.com/s?wd=%E5%9F%8E%E5%B8%82%E9%AA%91%E8%A1%8C'},
-  {c:'爆点',t:'博物馆文创持续出圈',d:'多款联名文创上新即售罄，传统文化以年轻化表达破圈，带动文博游热度。',src:'文化',url:'https://www.baidu.com/s?wd=%E5%8D%9A%E7%89%A9%E9%A6%86%E6%96%87%E5%88%9B'}
+  {c:'爆点',t:'夏季文旅消费持续升温',d:'入夏以来，多地推出夜间经济、避暑线路与城市漫步路线，带动餐饮、民宿、演出订单环比明显增长。业内人士指出，本地生活服务正进入全年旺季，文旅融合与短途周边游成为主流消费方式，预计暑期整体热度仍将延续。'},
+  {c:'科技',t:'AI助手走进日常办公',d:'多家厂商近期更新端侧大模型，手机和电脑在离线状态下也能写文档、做摘要、整理会议纪要，隐私与效率兼顾。职场人使用门槛持续降低，AI已从尝鲜工具转为提升生产力的日常助手，相关培训需求同步走高。'},
+  {c:'财经',t:'央行维持流动性合理充裕',d:'公开市场操作节奏平稳，市场利率低位运行，企业融资成本稳中有降，利好实体经济修复。机构分析认为，稳健的货币政策将为制造业升级与消费回暖提供稳定资金环境，四季度信贷结构有望进一步优化。'},
+  {c:'财经',t:'新能源板块估值回归',d:'随着装机量与出口数据改善，产业链盈利预期上调，机构建议关注具备成本优势的龙头企业。储能与电网配套需求同步增长，行业从单纯扩产转向高质量发展，具备技术壁垒的公司更易在周期波动中保持韧性。'},
+  {c:'生活',t:'城市骑行成新生活方式',d:'共享单车与公路车销量走高，通勤叠加周末郊游，带动运动装备、骑行服与咖啡街区消费。越来越多的年轻人把骑行当作减压与社交方式，城市绿道与滨水步道的使用率显著提升，慢行系统建设成为城市更新重点。'},
+  {c:'文化',t:'博物馆文创持续出圈',d:'多款联名文创上新即售罄，传统文化以年轻化表达破圈，带动文博游热度。从考古盲盒到国潮文具，博物馆正通过IP运营连接年轻受众，相关研学与夜游项目也成为家庭出游的新选择。'},
+  {c:'健康',t:'轻食与控糖饮食走俏',d:'随着健康意识提升，低糖、低油、高纤维的轻食套餐在写字楼与社区走红，控糖饮食成为年轻群体的新习惯。营养专家提醒，均衡搭配比单一戒断更重要，长期可持续的饮食结构才是保持健康的关键。'},
+  {c:'科技',t:'折叠屏手机加速普及',d:'随着铰链与屏幕工艺成熟，折叠屏手机价格下探、重量减轻，用户体验明显改善。主流厂商密集发布新机型，二手机流通与以旧换新活动也拉动了换机需求，折叠形态正从商务走向大众日常。'},
+  {c:'财经',t:'银发经济释放新潜力',d:'适老化改造、老年旅游与健康管理需求快速增长，银发经济成为消费新蓝海。政策鼓励社会资本进入养老与陪护服务，智能穿戴、居家监测设备等适老产品销量上升，相关就业岗位同步增加。'},
+  {c:'生活',t:'城市夜校与兴趣班升温',d:'下班后的夜校、手工与运动兴趣班受到上班族欢迎，成为缓解压力、拓展社交的新方式。从咖啡拉花到即兴戏剧，年轻人愿意为"悦己"体验付费，线下文娱消费呈现碎片化、圈层化趋势。'},
+  {c:'科技',t:'智能家电互联互通',d:'家电厂商推动设备跨品牌互联，扫地机、空调、灯光可通过统一入口联动，全屋智能门槛降低。语音与传感技术成熟让老人也能轻松使用，适老化的智能家居正从概念走向规模化落地。'},
+  {c:'文化',t:'县域旅游热度攀升',d:'小众县城凭借美食、自然风光与慢节奏生活出圈，县域旅游成为避开人潮的新选择。交通与民宿配套完善后，周末微度假需求上升，带动当地农产品与手工艺销售，县域经济获得新增长点。'}
 ];
 function newsRender(){
   const p=panel('news');
   p.innerHTML=
     '<div class="card news-panel">'+
       '<h2>📰 每日新闻</h2>'+
-      '<div class="sub">每日精选爆点新闻 + 简明财经，点击卡片一键跳转原平台看详情。</div>'+
+      '<div class="sub">每天自动更新 3 条热点新闻，内容完整详实，无需跳转即可阅读。</div>'+
       '<div class="grid" id="ng"></div>'+
-      '<div class="hint">📰 内容为每日精选摘要，点击可跳转搜索原平台获取完整报道。</div>'+
+      '<div class="hint">📰 每日 0 点根据日期轮换新内容，今天已为你精选 3 条。</div>'+
     '</div>';
   const ng=$('#ng');
-  NEWS.forEach(function(n){
-    const tagCls=n.c==='财经'?'econ-tag':'news-tag';
-    const d=document.createElement('div'); d.className='tile';
-    d.innerHTML='<div class="thumb">'+(n.c==='财经'?'📈':'🔥')+'</div><div class="body">'+
-      '<span class="'+tagCls+'">'+n.c+'</span>'+
-      '<div class="tt">'+n.t+'</div>'+
-      '<div class="td">'+n.d+'</div>'+
-      '<div class="jump"><a href="'+n.url+'" target="_blank" rel="noopener">🔗 看详情 '+n.src+'</a></div>'+
+  // 按日期选今日 3 条（每日更新、互不重复）
+  let fh=0; for(const c of td) fh=(fh*31+c.charCodeAt(0))>>>0;
+  const order=[];
+  for(let k=0;k<3;k++){ order.push(NEWS[(fh+k*3)%NEWS.length]); }
+  order.forEach(function(n){
+    const tagCls=(n.c==='财经'||n.c==='科技'||n.c==='文化')?'econ-tag':'news-tag';
+    const d=document.createElement('div'); d.className='tile news-tile';
+    d.innerHTML='<div class="body">'+
+      '<div class="nh"><span class="'+tagCls+'">'+n.c+'</span><span class="nt">'+n.t+'</span></div>'+
+      '<div class="td full">'+n.d+'</div>'+
     '</div>';
     ng.appendChild(d);
   });
