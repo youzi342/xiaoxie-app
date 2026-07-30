@@ -1,5 +1,5 @@
 // 小谢小姐的app —— Service Worker（离线缓存，使 PWA 可安装 + 离线可用）
-const CACHE = 'xx-miss-app-v1';
+const CACHE = 'xx-miss-app-v2';
 const FILES = [
   '.',
   'index.html',
@@ -20,11 +20,16 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  // 仅处理同源 GET 请求，导航请求优先返回缓存的 index.html（离线可用）
+  // 仅处理同源 GET 请求
   if (e.request.method !== 'GET' || new URL(e.request.url).origin !== self.location.origin) return;
   if (e.request.mode === 'navigate') {
+    // 网络优先：保证每次部署后都能看到最新版；离线时回退缓存（可安装 + 离线可用）
     e.respondWith(
-      caches.match('index.html').then(cached => cached || fetch(e.request))
+      fetch(e.request).then(resp => {
+        const copy = resp.clone();
+        caches.open(CACHE).then(c => c.put('index.html', copy));
+        return resp;
+      }).catch(() => caches.match('index.html'))
     );
     return;
   }
