@@ -986,6 +986,7 @@ function outfitFig(o,idx){
 }
 function fitRender(){
   const p=panel('fit');
+  const td=today();
   const myClothes=store.get('my_clothes',[]);
   p.innerHTML=
     '<div class="card fit-panel">'+
@@ -1088,6 +1089,7 @@ const NEWS=[
 ];
 function newsRender(){
   const p=panel('news');
+  const td=today();
   p.innerHTML=
     '<div class="card news-panel">'+
       '<h2>📰 每日新闻</h2>'+
